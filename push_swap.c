@@ -13,7 +13,7 @@ void    sort_three(t_stack *stack_a, int *iter)
         rra(stack_a);
         *iter += 2;
     }
-    else if (arr[1] < arr[0] && arr[0] > arr[2])
+    else if ((arr[1] < arr[0] && arr[0] > arr[2]) || (arr[0] < arr[1] && arr[1] > arr[2]))
     {
         sa(stack_a);
         *iter += 1;
