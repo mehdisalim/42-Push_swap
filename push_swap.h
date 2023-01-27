@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/01/26 12:42:52 by esalim           ###   ########.fr       */
+/*   Updated: 2023/01/27 10:15:24 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "libft/libft.h"
 #include "ft_printf/ft_printf.h"
+#include <stdio.h>
 
 typedef struct s_stack
 {
@@ -29,6 +30,7 @@ int     get_num_count(char   **num);
 void    ft_swap(char   **str1, char **str2);
 char    *get_all_args(int ac, char **av);
 
+void    sort_three(t_stack *stack_a, int *iter);
 
 //  STACK IMPLIMENTATION
 t_stack *oncreate(int capacity);

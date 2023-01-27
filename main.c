@@ -6,25 +6,46 @@
 /*   By: esalim <esalim@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/01/26 13:06:30 by esalim           ###   ########.fr       */
+/*   Updated: 2023/01/27 13:10:23 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
+int main(int ac, char **av);
+
 void    decoration(t_stack *stack_a, t_stack *stack_b, int iteration)
 {
     int i;
     system("clear");
     printf("operations :\n");
-    printf("\n0\t1\t2\t3\t4\t5\t6\t7\t8\t9\t10\t11\n");
-    printf("sa\tsb\tss\tpa\tpb\tra\trb\trr\trra\trrb\trrr\treset\n");
+    printf("\n0\t1\t2\t3\t4\t5\t6\t7\t8\t9\t10\t11\t12\t13\n");
+    printf("sa\tsb\tss\tpa\tpb\tra\trb\trr\trra\trrb\trrr\treset\tsort\targs\n");
     printf("==========================================================\n");
     i = stack_a->capacity;
     while (--i > -1)
         printf("stack_a\t%i\t==>\t%d\t|\tstack_b\t%i\t==>\t%d\t\n", i, stack_a->stack[i], i, stack_b->stack[i]);
     printf("\ntotal iteration is : %i\n", iteration);
+}
+
+void    send_args()
+{
+    int ac;
+    printf("ac : ");
+    scanf("%d", &ac);
+    printf("argv : \n");
+    int i = 1;
+    char **arr = malloc(ac * 8);
+    arr[0] =  ft_strdup("a.out");
+    while (i <= ac)
+    {
+        char str[20];
+        scanf("%s", str);
+        arr[i] = ft_strdup(str);
+        i++;
+    }
+    main(ac, arr);
 }
 
 void    setup_stack(t_stack **stack_a, t_stack **stack_b, char **numbers, int capacity)
@@ -115,6 +136,11 @@ begin:
            case 11:
                goto begin; 
                break ;
+           case 12:
+               sort_three(stack_a, &iteration);
+               break ;
+           case 13:
+               send_args();
 	       default:
 	           break ;
 	   }
