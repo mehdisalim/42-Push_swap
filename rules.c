@@ -38,10 +38,10 @@ void    ss(t_stack *stack_a, t_stack *stack_b)
 //      Do nothing if b is empty.
 void    pa(t_stack *stack_a, t_stack *stack_b)
 {
-    if (isEmpty(stack_a))
+    if (isEmpty(stack_b))
         return ;
-    push(stack_b, stack_a->stack[stack_a->top]);
-    pop(stack_a);
+    push(stack_a, stack_b->stack[stack_b->top]);
+    pop(stack_b);
 }
 
 // TODO:

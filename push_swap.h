@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/01/27 15:38:17 by esalim           ###   ########.fr       */
+/*   Updated: 2023/01/27 19:48:43 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int     get_num_count(char   **num);
 void    ft_swap(char   **str1, char **str2);
 char    *get_all_args(int ac, char **av);
 
+void    detect_sort(t_stack *stack_a, t_stack *stack_b, int *iter);
+void    sort_two(t_stack *stack_a, int *iter);
 void    sort_three(t_stack *stack_a, int *iter);
+void    sort_four(t_stack *stack_a, t_stack *stack_b, int *iter);
 
 //  STACK IMPLIMENTATION
 t_stack *oncreate(int capacity);

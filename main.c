@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/01/27 15:37:33 by esalim           ###   ########.fr       */
+/*   Updated: 2023/01/27 19:46:55 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void    setup_stack(t_stack **stack_a, t_stack **stack_b, char **numbers, int ca
     *stack_b = oncreate(capacity);
     clear(*stack_a);
     clear(*stack_b);
-    while (++i < capacity)
+    i = capacity;
+    while (--i > -1)
     {
         if (!check_isdigits(numbers[i]))
         {
@@ -137,7 +138,7 @@ begin:
                goto begin; 
                break ;
            case 12:
-               sort_three(stack_a, &iteration);
+               detect_sort(stack_a, stack_b, &iteration);
                break ;
            case 13:
                send_args();
