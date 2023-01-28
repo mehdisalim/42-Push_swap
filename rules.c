@@ -22,10 +22,11 @@ void    sa(t_stack *stack_a, int issb)
 //  TODO:
 //      sb (swap b): Swap the first 2 elements at the top of stack b.
 //      Do nothing if there is only one or no elements.
-void    sb(t_stack *stack_b)
+void    sb(t_stack *stack_b, int isss)
 {
     sa(stack_b, 1);
-    ft_printf("sb\n");
+    if (!isss)
+        ft_printf("sb\n");
 }
 
 
@@ -34,7 +35,8 @@ void    sb(t_stack *stack_b)
 void    ss(t_stack *stack_a, t_stack *stack_b)
 {
     sa(stack_a, 0);
-    sb(stack_b);
+    sb(stack_b, 1);
+    ft_printf("ss\n");
 }
 
 // TODO:
@@ -55,7 +57,7 @@ void    pa(t_stack *stack_a, t_stack *stack_b, int ispb)
 void    pb(t_stack *stack_b, t_stack *stack_a)
 {
     pa(stack_b, stack_a, 1);
-    ft_printf("pa\n");
+    ft_printf("pb\n");
 }
 
 // TODO:
@@ -82,10 +84,11 @@ void    ra(t_stack *stack_a, int isrb)
 //  TODO:
 //      rb (rotate b): Shift up all elements of stack b by 1.
 //      The first element becomes the last one.
-void    rb(t_stack *stack_b)
+void    rb(t_stack *stack_b, int isrr)
 {
     ra(stack_b, 1);
-    ft_printf("rb\n");
+    if (!isrr)
+        ft_printf("rb\n");
 }
 
 //  TODO:
@@ -93,7 +96,8 @@ void    rb(t_stack *stack_b)
 void    rr(t_stack *stack_a, t_stack *stack_b)
 {
     ra(stack_a, 0);
-    rb(stack_b);
+    rb(stack_b, 1);
+    ft_printf("rr\n");
 }
 
 //  TODO:
@@ -120,16 +124,18 @@ void    rra(t_stack *stack_a, int isrrb)
 //  TODO:
 //      rrb (reverse rotate b): Shift down all elements of stack b by 1.
 //      The last element becomes the first one.
-void    rrb(t_stack *stack_b)
+void    rrb(t_stack *stack_b, int isrrr)
 {
     rra(stack_b, 1);
-    ft_printf("rra\n");
+    if (!isrrr)
+        ft_printf("rra\n");
 }
 //  TODO:
 //      rrr : rra and rrb at the same time.
 void    rrr(t_stack *stack_a, t_stack *stack_b)
 {
     rra(stack_a, 0);
-    rrb(stack_b);
+    rrb(stack_b, 1);
+    ft_printf("rrr\n");
 }
 
