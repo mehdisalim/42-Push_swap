@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/01/27 19:46:55 by esalim           ###   ########.fr       */
+/*   Updated: 2023/01/28 14:33:56 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void    send_args()
         arr[i] = ft_strdup(str);
         i++;
     }
-    main(ac, arr);
+    main(++ac, arr);
 }
 
 void    setup_stack(t_stack **stack_a, t_stack **stack_b, char **numbers, int capacity)
@@ -55,8 +55,8 @@ void    setup_stack(t_stack **stack_a, t_stack **stack_b, char **numbers, int ca
     *stack_b = oncreate(capacity);
     clear(*stack_a);
     clear(*stack_b);
-    i = capacity;
-    while (--i > -1)
+    i = -1;
+    while (++i < capacity)
     {
         if (!check_isdigits(numbers[i]))
         {
@@ -91,7 +91,7 @@ begin:
 	   switch(j)
 	   {
 	       case 0:
-	           sa(stack_a);
+	           sa(stack_a, 0);
                iteration++;
 	           break ;
 	       case 1:
@@ -103,7 +103,7 @@ begin:
                iteration++;
 	           break ;
 	       case 3:
-	           pa(stack_a, stack_b);
+	           pa(stack_a, stack_b, 0);
                iteration++;
 	           break ;
 	       case 4:
@@ -111,7 +111,7 @@ begin:
                iteration++;
 	           break ;
 	       case 5:
-	           ra(stack_a);
+	           ra(stack_a, 0);
                iteration++;
 	           break ;
 	       case 6:
@@ -123,7 +123,7 @@ begin:
                iteration++;
 	           break ;
 	       case 8:
-	           rra(stack_a);
+	           rra(stack_a, 0);
                iteration++;
 	           break ;
 	       case 9:

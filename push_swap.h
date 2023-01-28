@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/01/27 19:48:43 by esalim           ###   ########.fr       */
+/*   Updated: 2023/01/28 15:42:20 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,26 @@ char    *get_all_args(int ac, char **av);
 void    detect_sort(t_stack *stack_a, t_stack *stack_b, int *iter);
 void    sort_two(t_stack *stack_a, int *iter);
 void    sort_three(t_stack *stack_a, int *iter);
-void    sort_four(t_stack *stack_a, t_stack *stack_b, int *iter);
+void    sort_five(t_stack *stack_a, t_stack *stack_b, int *iter);
 
 //  STACK IMPLIMENTATION
 t_stack *oncreate(int capacity);
 int     isFull(t_stack *stack);
 int     isEmpty(t_stack *stack);
 void    push(t_stack *stack, int content);
-void    pop(t_stack *stack);
+int     pop(t_stack *stack);
 void    clear(t_stack *stack);
 
 //  PUSH SWAP RULES
-void    sa(t_stack *stack_a);
+void    sa(t_stack *stack_a, int issb);
 void    sb(t_stack *stack_b);
 void    ss(t_stack *stack_a, t_stack *stack_b);
-void    pa(t_stack *stack_a, t_stack *stack_b);
+void    pa(t_stack *stack_a, t_stack *stack_b, int ispb);
 void    pb(t_stack *stack_b, t_stack *stack_a);
-void    ra(t_stack *stack_a);
+void    ra(t_stack *stack_a, int isra);
 void    rb(t_stack *stack_b);
 void    rr(t_stack *stack_a, t_stack *stack_b);
-void    rra(t_stack *stack_a);
+void    rra(t_stack *stack_a, int isrra);
 void    rrb(t_stack *stack_b);
 void    rrr(t_stack *stack_a, t_stack *stack_b);
 

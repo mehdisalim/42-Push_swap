@@ -30,12 +30,14 @@ void    push(t_stack *stack, int content)
     stack->stack[++stack->top] = content;
 }
 
-void    pop(t_stack *stack)
+int    pop(t_stack *stack)
 {
    if (isEmpty(stack) || !stack->stack)
-        return ;
+        return 0;
+    int value = stack->stack[stack->top];
     stack->stack[stack->top] = 0;
     stack->top--;
+    return (value);
 }
 
 void    clear(t_stack *stack)
