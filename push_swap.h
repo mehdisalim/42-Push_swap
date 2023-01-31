@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/01/28 23:00:56 by esalim           ###   ########.fr       */
+/*   Updated: 2023/01/31 13:11:56 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_stack
 {
     int     top;
     int     capacity;
-    int    *stack;
+    int     *stack;
 }   t_stack;
 
 //  PUSH SWAP UTILS
@@ -30,11 +30,15 @@ int     get_num_count(char   **num);
 void    ft_swap(char   **str1, char **str2);
 char    *get_all_args(int ac, char **av);
 
-void    detect_sort(t_stack *stack_a, t_stack *stack_b);
+void    detect_sort(t_stack *stack_a, t_stack *stack_b, int *iter);
+int     isbsorted(t_stack *stack_b);
 void    sort_two(t_stack *stack_a);
 void    sort_three(t_stack *stack_a);
 void    sort_four(t_stack *stack_a, t_stack *stack_b);
 void    sort_five(t_stack *stack_a, t_stack *stack_b);
+void    sort_all(t_stack *stack_a, t_stack *stack_b, int* iter);
+int     best_move(t_stack *stack_a, t_stack *stack_b);
+int     how_many_iteration_in_b(t_stack *stack_b, int value);
 
 //  STACK IMPLIMENTATION
 t_stack *oncreate(int capacity);

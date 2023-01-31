@@ -1,22 +1,32 @@
 #include "push_swap.h"
 
-#define TRUE 1
-#define FALSE 0
-
-int issorted(t_stack *stack_a)
+int isasorted(t_stack *stack_a)
 {
     int *arr = stack_a->stack;
     int i = 0;
-    while (arr[i])
+    while (i < stack_a->capacity)
     {
         if (arr[i + 1] && arr[i] < arr[i + 1])
-            return (FALSE);
+            return (0);
         i++;
     }
-    return (TRUE);
+    return (1);
 }
 
-void    detect_sort(t_stack *stack_a, t_stack *stack_b)
+int isbsorted(t_stack *stack_b)
+{
+    int *arr = stack_b->stack;
+    int i = 0;
+    while (i <= stack_b->top)
+    {
+        if (i + 1 <= stack_b->top && arr[i] > arr[i + 1])
+            return (0);
+        i++;
+    }
+    return (1);
+}
+
+void    detect_sort(t_stack *stack_a, t_stack *stack_b, int *iter)
 {
     if (stack_a->capacity == 2)
         sort_two(stack_a);
@@ -26,6 +36,8 @@ void    detect_sort(t_stack *stack_a, t_stack *stack_b)
         sort_four(stack_a, stack_b);
      else if (stack_a->capacity == 5)
         sort_five(stack_a, stack_b);
+    else if (stack_a->capacity > 5)
+        sort_all(stack_a, stack_b, iter);
 }
 
 void    sort_two(t_stack *stack_a)
@@ -77,7 +89,7 @@ int get_index_of_lowest_number(int *arr, int n)
 void    sort_four(t_stack *stack_a, t_stack *stack_b)
 {
     int idx;
-    if (issorted(stack_a))
+    if (isasorted(stack_a))
         return ;
     idx = get_index_of_lowest_number(stack_a->stack, stack_a->top); 
     if (idx == stack_a->top) 
@@ -106,7 +118,7 @@ void    sort_four(t_stack *stack_a, t_stack *stack_b)
 void sort_five(t_stack *stack_a, t_stack *stack_b)
 {
     int idx ;
-    if (issorted(stack_a))
+    if (isasorted(stack_a))
         return ;
 	idx = get_index_of_lowest_number(stack_a->stack, stack_a->top);
     if (idx == stack_a->top) 
@@ -135,4 +147,47 @@ void sort_five(t_stack *stack_a, t_stack *stack_b)
 	}
     sort_four(stack_a, stack_b);
     pa(stack_a, stack_b, 0);
+}
+
+void    sort_all(t_stack *stack_a, t_stack *stack_b, int *iter)
+{
+    int idx = 0;
+    if (isasorted(stack_a))
+        return ;
+    while (1)
+    {
+        if (stack_a->top == -1)
+            break ;
+        idx = get_index_of_lowest_number(stack_a->stack, stack_a->top);
+        ft_printf("\n%d\n\n", idx);
+        if (idx >= stack_a->top / 2)
+        {
+            while (idx++ < stack_a->top)
+            {
+                ra(stack_a, 0);
+                *iter += 1;
+            }
+            pb(stack_b, stack_a);
+            *iter += 1;
+        }
+        else
+        {
+            while (idx-- > -1)
+            {
+                rra(stack_a, 0);
+                *iter += 1;
+            }
+            pb(stack_b, stack_a);
+            *iter += 1;
+        }
+    }
+    if (isbsorted(stack_b))
+    {
+        while (stack_b->top > -1)
+        {
+            *iter += 1;
+            pa(stack_a, stack_b, 0);
+        }
+    }
+    return ;
 }

@@ -6,12 +6,11 @@
 /*   By: esalim <esalim@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/01/28 23:07:14 by esalim           ###   ########.fr       */
+/*   Updated: 2023/01/31 20:45:37 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void    setup_stack(t_stack **stack_a, t_stack **stack_b, char **numbers, int capacity)
 {
@@ -48,7 +47,10 @@ int main(int ac, char **av)
     t_stack *stack_a = NULL;
     t_stack *stack_b = NULL;
     setup_stack(&stack_a, &stack_b, numbers, capacity);
-    detect_sort(stack_a, stack_b);
-    print_stack(stack_a);
+//    best_move(stack_a, stack_b);
+    int i = how_many_iteration_in_b(stack_a, 9);
+    ft_printf("%d\n", i);
+//    detect_sort(stack_a, stack_b);
+//    print_stack(stack_a);
     return (0);
 }
