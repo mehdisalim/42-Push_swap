@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/03 12:42:04 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/03 21:00:37 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,14 @@ int main(int ac, char **av)
     // int value = get_position_in_b(stack_a, 50);
     pb(stack_b, stack_a);
     pb(stack_b, stack_a);
-    pb(stack_b, stack_a);
-    pb(stack_b, stack_a);
-    pb(stack_b, stack_a);
-    get_all_iterations(stack_a, stack_b);
+    push_all(stack_a, stack_b);
     // ft_printf("%d\n", );
     // best_move(stack_a, stack_b);
 //    int i = how_many_iteration_in_b(stack_a, 9);
 //    ft_printf("%d\n", i);
 //    detect_sort(stack_a, stack_b, &iter);
-   while (stack_b->top > -1)
-        ft_printf("%d\n", pop(stack_b));
+//    while (stack_b->top > -1)
+//         ft_printf("%d\n", pop(stack_b));
    
 //    print_stack(stack_a);
     return (0);

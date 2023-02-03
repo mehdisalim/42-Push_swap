@@ -95,7 +95,7 @@ void    rb(t_stack *stack_b, int isrr)
 //      rr : ra and rb at the same time.
 void    rr(t_stack *stack_a, t_stack *stack_b)
 {
-    ra(stack_a, 0);
+    ra(stack_a, 1);
     rb(stack_b, 1);
     ft_printf("rr\n");
 }
@@ -134,7 +134,7 @@ void    rrb(t_stack *stack_b, int isrrr)
 //      rrr : rra and rrb at the same time.
 void    rrr(t_stack *stack_a, t_stack *stack_b)
 {
-    rra(stack_a, 0);
+    rra(stack_a, 1);
     rrb(stack_b, 1);
     ft_printf("rrr\n");
 }
