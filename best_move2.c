@@ -1,18 +1,5 @@
 #include "push_swap.h"
 
-int	get_max_number(t_stack *stack)
-{
-	int i = stack->top;
-	int bigest = stack->stack[i];
-	while (i > -1)
-	{
-		if (bigest < stack->stack[i])
-			bigest = stack->stack[i];
-		i--;
-	}
-	return (bigest);
-}
-
 int	get_min_number(t_stack *stack)
 {
 	int i = stack->top;
@@ -45,71 +32,112 @@ t_retations get_position_in_b(t_stack *stack_b, int value)
 	}
 	rt_b.rb = stack_b->top - n;
 	rt_b.rrb = n + 1;
+	rt_b.ra = 0;
+	rt_b.rra = 0;
+	rt_b.rr = 0;
+	rt_b.rrr = 0;
 	return (rt_b);
 }
 
-// t_retations getpositions_in_a(t_stack *stack_a)
-// {
-// 	t_retations rt_a;
-// 	int *arr = stack_a->stack;
-// 	int top = stack_a->top;
-// 	while (top)
-// 	{
-		
-// 	}
-// 	rt_a.ra = 0;
-// 	rt_a.rb = stack_a->top - n;
-// 	rt_a.rr = 0;
-// 	rt_a.rra = 0;
-// 	rt_a.rrb = n + 1;
-// 	rt_a.rrr = 0;
-// }
-
-// void	compare_operations(t_stack *stack_a, t_stack *stack_b)
-// {
-
-// }
-
-void	push_to_stack_b(t_stack *stack_a, t_stack *stack_b)
+int get_number_of_operation(int res[4])
 {
-	pb(stack_b, stack_a);
-	pb(stack_b, stack_a);
-	// pb(stack_b, stack_a);
-	// pb(stack_b, stack_a);
-	// if (stack_b->stack[0] > stack_b->stack[1])
-	// 	sb(stack_b, 0);
+	int small = res[0];
+	int idx = 0;
+	int i = 0;
+	while (i < 4)
+	{
+		if (res[i] <= small)
+		{
+			small = res[i];
+			idx = i;
+		}
+		i++;
+	}
+	return (small);
+}
+
+int get_index_of_operation(int res[4])
+{
+	int small = res[0];
+	int idx = 0;
+	int i = 0;
+	while (i < 4)
+	{
+		if (res[i] <= small)
+		{
+			small = res[i];
+			idx = i;
+		}
+		i++;
+	}
+	return (idx);
+}
+
+void	get_best_move(t_retations *operations, int len)
+{
+	// t_retations best_move;
+	// int index; 
+	int res[4]= {500};
+	while (len > -1)
+	{
+		res[0] = operations[len].ra + operations[len].rb;
+		res[1] = operations[len].ra + operations[len].rrb;
+		res[2] = operations[len].rra + operations[len].rb;
+		res[3] = operations[len].rra + operations[len].rrb;
+		int idx = get_index_of_operation(res);
+		if (idx == 0)
+		{
+			operations[len].rr = operations[len].rb;
+			if (operations[len].ra < operations[len].rb)
+				operations[len].rr = operations[len].ra;
+			operations[len].ra -= operations[len].rr;
+			operations[len].rb -= operations[len].rr;
+			operations[len].rrb = 0;
+			operations[len].rra = 0;
+		}
+		if (idx == 1)
+		{
+			operations[len].rb = 0;
+			operations[len].rra = 0;
+		}
+		if (idx == 2)
+		{
+			operations[len].rrb = 0;
+			operations[len].ra = 0;
+		}
+		if (idx == 3)
+		{
+			operations[len].rrr = operations[len].rrb;
+			if (operations[len].rra < operations[len].rrb)
+				operations[len].rrr = operations[len].rra;
+			operations[len].rra -= operations[len].rrr;
+			operations[len].rrb -= operations[len].rrr;
+			operations[len].rb = 0;
+			operations[len].ra = 0;
+		}
+		len--;
+	}
+}
+
+t_retations	*get_all_iterations(t_stack *stack_a, t_stack *stack_b)
+{
 	int i = stack_a->top;
 	t_retations tmp;
-	int j = 0;
 	t_retations *operations = malloc(sizeof(operations) * (i + 1));
 	while (i > -1)
 	{
-		// rev_sorted_b(stack_b);
 		tmp = get_position_in_b(stack_b, stack_a->stack[i]);
 		tmp.ra = stack_a->top - i;
 		tmp.rra = i + 1;
 		operations[i] = tmp;
-		j++;
-		// ft_printf("stack_a value\t=\t%d\trb\t=\t%d\t|\trrb\t=\t%d\n", stack_a->stack[i], n.rb, n.rrb);
-		// while (n.rb)
-		// {
-		// 	rb(stack_b, 0);
-		// 	n.rb--;
-		// }
-		// while (n.rrb)
-		// {
-		// 	rrb(stack_b, 0);
-		// 	n.rrb--;
-		// }
-		// pb(stack_b, stack_a);
 		i--;
 	}
 	i = stack_a->top;
 	while (i > -1)
 	{
-		ft_printf("value =\t%d\t{ ra =\t%d\t, rra =\t%d }\t{ rb =\t%d\t, rrb =\t%d }\n", stack_a->stack[i], operations[i].ra, operations[i].rra, operations[i].rb, operations[i].rrb);
+		ft_printf("value =\t%d\t{ ra =\t%d\t, rra =\t%d }\t{ rb =\t%d\t, rrb =\t%d }\n\n", stack_a->stack[i], operations[i].ra, operations[i].rra, operations[i].rb, operations[i].rrb);
 		i--;
 	}
-
-	
+	get_best_move(operations, stack_a->top);
+	return (operations);
 }
