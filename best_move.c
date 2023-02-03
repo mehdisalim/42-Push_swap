@@ -19,25 +19,75 @@ void    best_position_in_stack_b(t_stack *stack_b, int value)
 }
 */
 
+int getbigestnumber(t_stack *stack)
+{
+    int *arr = stack->stack;
+    int i = stack->top;
+    int lowest = arr[i];
+    while (i)
+    {
+        if (arr[i] > lowest)
+            lowest = arr[i];
+        i--;
+    }
+    return (lowest);
+}
+
+int getlowestnumber(t_stack *stack)
+{
+    int *arr = stack->stack;
+    int i = stack->top;
+    int lowest = arr[i];
+    while (i)
+    {
+        if (arr[i] < lowest)
+            lowest = arr[i];
+        i--;
+    }
+    return (lowest);
+}
+
+int getlowestnumber_idx(t_stack *stack)
+{
+    int *arr = stack->stack;
+    int i = stack->top;
+    int lowest = arr[i];
+    int n = 0;
+    while (i)
+    {
+        if (arr[i] < lowest)
+        {
+            lowest = arr[i];
+            n = i;
+        }
+        i--;
+    }
+    return (n);
+}
+
 int how_many_iteration_in_b(t_stack *stack_b, int value)
 {
     int *arr = stack_b->stack;
-    int i = 0;
-    int pre_v = 0;
+    int i = stack_b->top;
+    int pre_v = stack_b->stack[getlowestnumber_idx(stack_b)];
+    //ft_printf("%d\n", pre_v);
     int x = 0;
-    while (i <= stack_b->top)
+    if (value < getlowestnumber(stack_b) || value > getbigestnumber(stack_b))
+        return 0;
+    while (i)
     {
-        if (arr[i] < value && pre_v <= arr[i])
+        if (pre_v < arr[i] && arr[i] < value)
         {
             pre_v = arr[i];
-            ft_printf("|%d|\n", pre_v);
             x = i;
         }
-        ft_printf("%d\n", x);
-        i++;
+        i--;
     }
+    //ft_printf("pre_v == %d\n", pre_v);
     if (stack_b->top / 2 < x)
-        x = stack_b->top - x + 1;
+        x = stack_b->top - x;
+    else 
+        x++; 
     return (x);
 }
 
@@ -54,7 +104,7 @@ int   best_move(t_stack *stack_a, t_stack *stack_b)
     //t_stack *tmp_stack = oncreate(stack_a->capacity);
     pb(stack_b, stack_a);
     pb(stack_b, stack_a);
-    if (stack_b->stack[0] > stack_b->stack[1])
+    if (stack_b->stack[0] < stack_b->stack[1])
         sb(stack_b, 0);
     int iter_a;
     int iter_b;
@@ -64,20 +114,20 @@ int   best_move(t_stack *stack_a, t_stack *stack_b)
     int b = 0;
     int middle;
     int y = 0;
-    while (y++ <  2)
+    while (y++ < 2)
     {
        middle = stack_a->top / 2;
-       i = 0;
+       i = stack_a->top;
        a = 0;
        b = 0;
 	    iter_a = how_many_iteration_in_a(i, stack_a->top);
 	    iter_b = how_many_iteration_in_b(stack_b, arr[i]);
         idx = iter_a + iter_b;
-	   while (i <= stack_a->top)
+	   while (i)
 	   {
 	       iter_a = how_many_iteration_in_a(i, stack_a->top);
 	       iter_b = how_many_iteration_in_b(stack_b, arr[i]);
-           ft_printf("%d\t == iter ==> %d\n", arr[i], iter_a + iter_b);
+       //    ft_printf("%d\t == iter ==> %d\n", arr[i], iter_a + iter_b);
            if (iter_a + iter_b < idx)
            {
                a = iter_a;
@@ -85,9 +135,9 @@ int   best_move(t_stack *stack_a, t_stack *stack_b)
                idx = a + b;
                y = i;
            }
-	       i++;
+	       i--;
 	   }
-       ft_printf("%d\n", a);
+       //ft_printf("%d\n", a);
        while (a > -1)
        {
            if (y > middle)

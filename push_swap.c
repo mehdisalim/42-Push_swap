@@ -6,7 +6,7 @@ int isasorted(t_stack *stack_a)
     int i = 0;
     while (i < stack_a->capacity)
     {
-        if (arr[i + 1] && arr[i] < arr[i + 1])
+        if (i + 1 <= stack_a->capacity && arr[i] < arr[i + 1])
             return (0);
         i++;
     }
@@ -159,7 +159,7 @@ void    sort_all(t_stack *stack_a, t_stack *stack_b, int *iter)
         if (stack_a->top == -1)
             break ;
         idx = get_index_of_lowest_number(stack_a->stack, stack_a->top);
-        ft_printf("\n%d\n\n", idx);
+        // ft_printf("\n%d\n\n", idx);
         if (idx >= stack_a->top / 2)
         {
             while (idx++ < stack_a->top)

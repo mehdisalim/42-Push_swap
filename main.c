@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esalim <esalim@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/01/31 20:45:37 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/02 21:32:21 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,18 @@ int main(int ac, char **av)
     int capacity = get_num_count(numbers); 
     t_stack *stack_a = NULL;
     t_stack *stack_b = NULL;
+    // int iter = 0;
     setup_stack(&stack_a, &stack_b, numbers, capacity);
-//    best_move(stack_a, stack_b);
-    int i = how_many_iteration_in_b(stack_a, 9);
-    ft_printf("%d\n", i);
-//    detect_sort(stack_a, stack_b);
+    // int value = get_position_in_b(stack_a, 50);
+    push_to_stack_b(stack_a, stack_b);
+    // ft_printf("%d\n", );
+    // best_move(stack_a, stack_b);
+//    int i = how_many_iteration_in_b(stack_a, 9);
+//    ft_printf("%d\n", i);
+//    detect_sort(stack_a, stack_b, &iter);
+   while (stack_b->top > -1)
+        ft_printf("%d\n", pop(stack_b));
+   
 //    print_stack(stack_a);
     return (0);
 }

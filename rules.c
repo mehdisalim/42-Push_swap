@@ -128,7 +128,7 @@ void    rrb(t_stack *stack_b, int isrrr)
 {
     rra(stack_b, 1);
     if (!isrrr)
-        ft_printf("rra\n");
+        ft_printf("rrb\n");
 }
 //  TODO:
 //      rrr : rra and rrb at the same time.

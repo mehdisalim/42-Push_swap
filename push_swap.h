@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esalim <esalim@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/01/31 13:11:56 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/03 09:59:47 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,16 @@
 
 #include "libft/libft.h"
 #include "ft_printf/ft_printf.h"
-#include <stdio.h>
+
+typedef struct s_retations
+{
+    int ra;
+    int rb;
+    int rr;
+    int rra;
+    int rrb;
+    int rrr;
+} t_retations;
 
 typedef struct s_stack
 {
@@ -39,6 +48,8 @@ void    sort_five(t_stack *stack_a, t_stack *stack_b);
 void    sort_all(t_stack *stack_a, t_stack *stack_b, int* iter);
 int     best_move(t_stack *stack_a, t_stack *stack_b);
 int     how_many_iteration_in_b(t_stack *stack_b, int value);
+t_retations get_position_in_b(t_stack *stack_b, int value);
+void	push_to_stack_b(t_stack *stack_a, t_stack *stack_b);
 
 //  STACK IMPLIMENTATION
 t_stack *oncreate(int capacity);
