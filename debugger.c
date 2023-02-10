@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debugger.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esalim <esalim@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/01/29 13:44:27 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/10 16:35:22 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ begin:
 	   switch(j)
 	   {
 	       case 0:
-	           sa(stack_a, 0);
+	           sa(stack_a);
                iteration++;
 	           break ;
 	       case 1:
-	           sb(stack_b, 0);
+	           sb(stack_b);
                iteration++;
 	           break ;
 	       case 2:
@@ -103,7 +103,7 @@ begin:
                iteration++;
 	           break ;
 	       case 3:
-	           pa(stack_a, stack_b, 0);
+	           pa(stack_a, stack_b);
                iteration++;
 	           break ;
 	       case 4:
@@ -111,11 +111,11 @@ begin:
                iteration++;
 	           break ;
 	       case 5:
-	           ra(stack_a, 0);
+	           ra(stack_a);
                iteration++;
 	           break ;
 	       case 6:
-	           rb(stack_b, 0);
+	           rb(stack_b);
                iteration++;
 	           break ;
 	       case 7:
@@ -123,11 +123,11 @@ begin:
                iteration++;
 	           break ;
 	       case 8:
-	           rra(stack_a, 0);
+	           rra(stack_a);
                iteration++;
 	           break ;
 	       case 9:
-	           rrb(stack_b, 0);
+	           rrb(stack_b);
                iteration++;
 	           break ;
 	       case 10:

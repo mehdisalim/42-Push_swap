@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esalim <esalim@student.1337.ma>            +#+  +:+       +#+         #
+#    By: esalim <esalim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 22:29:48 by esalim            #+#    #+#              #
-#    Updated: 2023/01/30 20:48:59 by esalim           ###   ########.fr        #
+#    Updated: 2023/02/04 09:48:34 by esalim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	=	push_swap
 
 CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror
-SRCS	=	rules.c stack.c push_swap_utils.c push_swap.c main.c best_move.c #debugger.c
+SRCS	=	rules.c stack.c push_swap_utils.c push_swap.c main.c best_move.c best_move2.c chunk_algo.c #debugger.c
 OBJS	=	$(SRCS:.c=.o)
 
 RM		=	rm -rf
