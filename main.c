@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/03 21:00:37 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/10 14:55:24 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int main(int ac, char **av)
     t_stack *stack_b = NULL;
     // int iter = 0;
     setup_stack(&stack_a, &stack_b, numbers, capacity);
+    // quick_sort(stack_a);
     // int value = get_position_in_b(stack_a, 50);
     pb(stack_b, stack_a);
     pb(stack_b, stack_a);
