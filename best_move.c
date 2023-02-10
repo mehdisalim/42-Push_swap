@@ -105,7 +105,7 @@ int   best_move(t_stack *stack_a, t_stack *stack_b)
     pb(stack_b, stack_a);
     pb(stack_b, stack_a);
     if (stack_b->stack[0] < stack_b->stack[1])
-        sb(stack_b, 0);
+        sb(stack_b);
     int iter_a;
     int iter_b;
     int i = 0;
@@ -141,18 +141,18 @@ int   best_move(t_stack *stack_a, t_stack *stack_b)
        while (a > -1)
        {
            if (y > middle)
-               ra(stack_a, 0);
+               ra(stack_a);
            else
-               rra(stack_a, 0);
+               rra(stack_a);
            a--;
        }
 
        while (b > -1)
        {
            if (y > stack_b->top / 2)
-               rb(stack_a, 0);
+               rb(stack_b);
            else
-               rrb(stack_a, 0);
+               rrb(stack_b);
            b--;
        }
        pb(stack_b, stack_a);
@@ -161,7 +161,7 @@ int   best_move(t_stack *stack_a, t_stack *stack_b)
             ft_printf("%d\n", stack_b->stack[j++]);
         ft_printf("=========================================\n");
        //while (!isbsorted(stack_b))
-           //rrb(stack_b, 0);
+           //rrb(stack_b);
     }
     i = 0;
     while (i <= stack_b->top)

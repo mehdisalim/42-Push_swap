@@ -26,7 +26,7 @@ int isbsorted(t_stack *stack_b)
     return (1);
 }
 
-void    detect_sort(t_stack *stack_a, t_stack *stack_b, int *iter)
+void    detect_sort(t_stack *stack_a, t_stack *stack_b)
 {
     if (stack_a->capacity == 2)
         sort_two(stack_a);
@@ -37,34 +37,34 @@ void    detect_sort(t_stack *stack_a, t_stack *stack_b, int *iter)
      else if (stack_a->capacity == 5)
         sort_five(stack_a, stack_b);
     else if (stack_a->capacity > 5)
-        sort_all(stack_a, stack_b, iter);
+        push_all(stack_a, stack_b);
 }
 
 void    sort_two(t_stack *stack_a)
 {
     if (stack_a->stack[0] < stack_a->stack[1])
-        sa(stack_a, 0);
+        sa(stack_a);
 }
 
 void    sort_three(t_stack *stack_a)
 {
     int *arr = stack_a->stack;
     if (arr[2] > arr[1] && arr[0] > arr[1] && arr[2] < arr[0])
-        sa(stack_a, 0);
+        sa(stack_a);
     if (arr[2] > arr[1] && arr[1] > arr[0])
     {
-        sa(stack_a, 0);
-        ra(stack_a, 0);
+        sa(stack_a);
+        ra(stack_a);
     }
     if (arr[2] > arr[1] && arr[0] > arr[1] && arr[2] > arr[0])
-        ra(stack_a, 0);
+        ra(stack_a);
     if (arr[2] < arr[1] && arr[0] < arr[1] && arr[2] < arr[0])
     {
-        sa(stack_a, 0);
-        ra(stack_a, 0);
+        sa(stack_a);
+        ra(stack_a);
     }
     if (arr[2] < arr[1] && arr[0] < arr[1] && arr[2] > arr[0])
-        rra(stack_a, 0);
+        rra(stack_a);
 
     return ;
 }
@@ -96,23 +96,23 @@ void    sort_four(t_stack *stack_a, t_stack *stack_b)
 	    pb(stack_b, stack_a);
     else if (idx == 0)
 	{
-	    rra(stack_a, 0);
+	    rra(stack_a);
 	    pb(stack_b, stack_a);
 	}
     else if (idx == 1)
 	{
-	    rra(stack_a, 0);
-	    rra(stack_a, 0);
+	    rra(stack_a);
+	    rra(stack_a);
 	    pb(stack_b, stack_a);
 	}
     else if (idx == 2)
 	{
-	    sa(stack_a, 0);
+	    sa(stack_a);
 	    pb(stack_b, stack_a);
 	}
     sort_three(stack_a);
     while (stack_b->top > -1)
-        pa(stack_a, stack_b, 0);
+        pa(stack_a, stack_b);
 }
 
 void sort_five(t_stack *stack_a, t_stack *stack_b)
@@ -125,28 +125,28 @@ void sort_five(t_stack *stack_a, t_stack *stack_b)
 	    pb(stack_b, stack_a);
     else if (idx == 0)
 	{
-	    rra(stack_a, 0);
+	    rra(stack_a);
 	    pb(stack_b, stack_a);
 	}
     else if (idx == 1)
 	{
-	    rra(stack_a, 0);
-	    rra(stack_a, 0);
+	    rra(stack_a);
+	    rra(stack_a);
 	    pb(stack_b, stack_a);
 	}
     else if (idx == 2)
 	{
-	    ra(stack_a, 0);
-	    sa(stack_a, 0);
+	    ra(stack_a);
+	    sa(stack_a);
 	    pb(stack_b, stack_a);
 	}
     else if (idx == 3)
 	{
-	    sa(stack_a, 0);
+	    sa(stack_a);
 	    pb(stack_b, stack_a);
 	}
     sort_four(stack_a, stack_b);
-    pa(stack_a, stack_b, 0);
+    pa(stack_a, stack_b);
 }
 
 void    sort_all(t_stack *stack_a, t_stack *stack_b, int *iter)
@@ -164,7 +164,7 @@ void    sort_all(t_stack *stack_a, t_stack *stack_b, int *iter)
         {
             while (idx++ < stack_a->top)
             {
-                ra(stack_a, 0);
+                ra(stack_a);
                 *iter += 1;
             }
             pb(stack_b, stack_a);
@@ -174,7 +174,7 @@ void    sort_all(t_stack *stack_a, t_stack *stack_b, int *iter)
         {
             while (idx-- > -1)
             {
-                rra(stack_a, 0);
+                rra(stack_a);
                 *iter += 1;
             }
             pb(stack_b, stack_a);
@@ -186,7 +186,7 @@ void    sort_all(t_stack *stack_a, t_stack *stack_b, int *iter)
         while (stack_b->top > -1)
         {
             *iter += 1;
-            pa(stack_a, stack_b, 0);
+            pa(stack_a, stack_b);
         }
     }
     return ;

@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/10 14:53:49 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/10 16:43:22 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int     get_num_count(char   **num);
 void    ft_swap(char   **str1, char **str2);
 char    *get_all_args(int ac, char **av);
 
-void    detect_sort(t_stack *stack_a, t_stack *stack_b, int *iter);
+void    detect_sort(t_stack *stack_a, t_stack *stack_b);
 int     isbsorted(t_stack *stack_b);
 void    sort_two(t_stack *stack_a);
 void    sort_three(t_stack *stack_a);
@@ -63,16 +63,16 @@ int     pop(t_stack *stack);
 void    clear(t_stack *stack);
 
 //  PUSH SWAP RULES
-void    sa(t_stack *stack_a, int issb);
-void    sb(t_stack *stack_b, int isss);
+void    sa(t_stack *stack_a);
+void    sb(t_stack *stack_b);
 void    ss(t_stack *stack_a, t_stack *stack_b);
-void    pa(t_stack *stack_a, t_stack *stack_b, int ispb);
+void    pa(t_stack *stack_a, t_stack *stack_b);
 void    pb(t_stack *stack_b, t_stack *stack_a);
-void    ra(t_stack *stack_a, int isra);
-void    rb(t_stack *stack_b, int isrr);
+void    ra(t_stack *stack_a);
+void    rb(t_stack *stack_b);
 void    rr(t_stack *stack_a, t_stack *stack_b);
-void    rra(t_stack *stack_a, int isrra);
-void    rrb(t_stack *stack_b, int isrrr);
+void    rra(t_stack *stack_a);
+void    rrb(t_stack *stack_b);
 void    rrr(t_stack *stack_a, t_stack *stack_b);
 
 #endif

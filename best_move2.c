@@ -152,22 +152,22 @@ void	apply_rules(t_stack *stack_a, t_stack *stack_b, t_retations op)
 {
 	while (op.ra)
 	{
-		ra(stack_a, 0);
+		ra(stack_a);
 		op.ra--;
 	}
 	while (op.rb)
 	{
-		rb(stack_b, 0);
+		rb(stack_b);
 		op.rb--;
 	}
 	while (op.rra)
 	{
-		rra(stack_a, 0);
+		rra(stack_a);
 		op.rra--;
 	}
 	while (op.rrb)
 	{
-		rrb(stack_b, 0);
+		rrb(stack_b);
 		op.rrb--;
 	}
 	while (op.rr)
@@ -212,9 +212,9 @@ void	sort_stack_b(t_stack *stack_b)
 	while (!isbsorted(stack_b))
 	{
 		if (idx < stack_b->top / 2)
-			rrb(stack_b, 0);
+			rrb(stack_b);
 		else
-			rb(stack_b, 0);
+			rb(stack_b);
 	}
 }
 
@@ -222,6 +222,8 @@ void	push_all(t_stack *stack_a, t_stack *stack_b)
 {
 	int *arr = ft_calloc(stack_a->top + 1, sizeof(int));
 	t_retations *operations = ft_calloc(5, sizeof(t_retations));
+	    pb(stack_b, stack_a);
+    pb(stack_b, stack_a);
 	while (stack_a->top > -1)
 	{
 		get_all_iterations(stack_b, stack_a->stack, stack_a->top, operations);
@@ -229,13 +231,13 @@ void	push_all(t_stack *stack_a, t_stack *stack_b)
 		push_to_b(stack_a, stack_b, operations, arr);
 	
 	}
-	free(operations);
-	free(arr);
+	// free(operations);
+	// free(arr);
 	// sort_three(stack_a);
 	sort_stack_b(stack_b);
 	if (isbsorted(stack_b))
 	{
 		while (stack_b->top > -1)
-			pa(stack_a, stack_b, 0);
+			pa(stack_a, stack_b);
 	}
 }
