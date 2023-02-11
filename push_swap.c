@@ -37,7 +37,11 @@ void    detect_sort(t_stack *stack_a, t_stack *stack_b)
      else if (stack_a->capacity == 5)
         sort_five(stack_a, stack_b);
     else if (stack_a->capacity > 5)
-        push_all(stack_a, stack_b);
+    {
+
+        push_all_to_b(stack_a, stack_b);
+        push_all(stack_b, stack_a);
+    }
 }
 
 void    sort_two(t_stack *stack_a)

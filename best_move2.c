@@ -30,7 +30,7 @@ int	get_max_index(t_stack *stack)
 	return (n);
 }
 
-t_retations get_position_in_b(t_stack *stack_b, int value)
+t_retations	get_position_in_b(t_stack *stack_b, int value)
 {
 	int pre_v = get_min_number(stack_b);
 	
@@ -101,7 +101,7 @@ int get_index_of_operation(int *res, int len)
 	return (idx);
 }
 
-void get_best_move(t_retations *operations, int len, int *arr)
+void	get_best_move(t_retations *operations, int len, int *arr)
 {
 	// t_retations best_move;
 	// int index;
@@ -191,7 +191,7 @@ void	push_to_b(t_stack *stack_a, t_stack *stack_b, t_retations *operations, int 
 	pb(stack_b, stack_a);
 }
 
-void get_all_iterations(t_stack *stack_b, int *value, int top, t_retations *operations)
+void	get_all_iterations(t_stack *stack_b, int *value, int top, t_retations *operations)
 {
 	int i = top;
 	t_retations tmp;
@@ -222,22 +222,33 @@ void	push_all(t_stack *stack_a, t_stack *stack_b)
 {
 	int *arr = ft_calloc(stack_a->top + 1, sizeof(int));
 	t_retations *operations = ft_calloc(5, sizeof(t_retations));
-	    pb(stack_b, stack_a);
-    pb(stack_b, stack_a);
 	while (stack_a->top > -1)
 	{
 		get_all_iterations(stack_b, stack_a->stack, stack_a->top, operations);
 		get_best_move(operations, stack_a->top, arr);
 		push_to_b(stack_a, stack_b, operations, arr);
-	
 	}
-	// free(operations);
-	// free(arr);
-	// sort_three(stack_a);
+	free(operations);
+	free(arr);
 	sort_stack_b(stack_b);
 	if (isbsorted(stack_b))
 	{
 		while (stack_b->top > -1)
 			pa(stack_a, stack_b);
 	}
+}
+
+void	push_all_to_b(t_stack *stack_a, t_stack *stack_b)
+{
+	int middle;
+	while (stack_a->top > 2)
+	{
+		middle = get_middle_of_arr(stack_a);
+		if (stack_a->stack[stack_a->top] < middle)
+			pb(stack_b, stack_a);
+		else
+			ra(stack_a);
+	}
+	if (stack_a->top == 2)
+		sort_three(stack_a);
 }

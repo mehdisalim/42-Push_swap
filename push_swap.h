@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/10 16:43:22 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/11 12:52:01 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #include "libft/libft.h"
 #include "ft_printf/ft_printf.h"
+
+
+#define FT_P(msg) ft_printf(#msg " ==> %d\n", msg)
 
 typedef struct s_retations
 {
@@ -52,7 +55,8 @@ t_retations get_position_in_b(t_stack *stack_b, int value);
 void    get_all_iterations(t_stack *stack_b, int *value, int top, t_retations *operations);
 void	push_all(t_stack *stack_a, t_stack *stack_b);
 int	get_min_index(t_stack *stack);
-int	*quick_sort(t_stack *stack_a);
+int	get_middle_of_arr(t_stack *stack_a);
+void	push_all_to_b(t_stack *stack_a, t_stack *stack_b);
 
 //  STACK IMPLIMENTATION
 t_stack *oncreate(int capacity);

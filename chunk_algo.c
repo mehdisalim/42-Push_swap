@@ -17,48 +17,30 @@ int	get_min_index(t_stack *stack)
 	return (n);
 }
 
-void divide_array(int *arr, int len)
+void	ft_copy(t_stack *tmp, t_stack *src)
 {
-	int divider = 20;
-	(void)arr;
-	while (len <= divider || len % divider != 0)
-		divider--;
-	int *divide_idx = malloc(sizeof(int) * divider);
-	int increements = len / divider;
 	int i = 0;
-	int j = -1;
-	while (i < len)
-	{
-		divide_idx[++j] = arr[i];
-		i += increements;
-		
-	}
-	i = -1;
-	while (++i < j)
-		ft_printf("%d\n", divide_idx[i]);
+	while (i <= src->top)
+		push(tmp, src->stack[i++]);
 }
 
-int	*quick_sort(t_stack *stack_a)
+int	get_middle_of_arr(t_stack *stack_a)
 {
-    t_stack *tmp = stack_a;
-    int idx;
+    t_stack *tmp = oncreate(stack_a->capacity);
+	ft_copy(tmp, stack_a);
     int value;
-    int *arr = malloc(sizeof(int) * tmp->capacity);
-    int i = 0;
-    while (tmp->top > -1)
+    int i = -1;
+    while (++i <= tmp->top)
     {
-        idx = get_min_index(tmp);
-        value = tmp->stack[idx];
-        tmp->stack[idx] = tmp->stack[tmp->top]; 
-        tmp->stack[tmp->top] = value;
-        arr[i++] = pop(tmp);
+        if (i + 1 <= tmp->top && tmp->stack[i] > tmp->stack[i + 1])
+		{
+			value = tmp->stack[i];
+			tmp->stack[i] = tmp->stack[i + 1];
+			tmp->stack[i + 1] = value;
+			i = -1;
+		}
     }
-	divide_array(arr, i);
-	return (arr);
+	value = tmp->stack[i / 2];
+	free(tmp->stack);
+	return (value);
 }
-
-
-// void    chunk_algo(t_stack *stack_a, t_stack *stack_b)
-// {
-
-// }

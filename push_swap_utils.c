@@ -21,7 +21,7 @@ void    ft_swap(char   **str1, char **str2)
     char    *tmp;
 
     tmp = ft_strjoin(*str1, *str2);
-    // free(*str1);
+    free(*str1);
     *str1 = tmp;
 }
 
