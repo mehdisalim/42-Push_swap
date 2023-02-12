@@ -1,27 +1,10 @@
 #include "push_swap.h"
 
-int	get_min_index(t_stack *stack)
-{
-	int i = stack->top;
-	int lowest = stack->stack[i];
-	int n = i;
-	while (i > -1)
-	{
-		if (lowest > stack->stack[i])
-		{
-			lowest = stack->stack[i];
-			n = i;
-		}
-		i--;
-	}
-	return (n);
-}
-
-void	ft_copy(t_stack *tmp, t_stack *src)
+void    ft_copy(t_stack *tmp, t_stack *src)
 {
 	int i = 0;
 	while (i <= src->top)
-		push(tmp, src->stack[i++]);
+			push(tmp, src->stack[i++]);
 }
 
 int	get_middle_of_arr(t_stack *stack_a)
@@ -41,6 +24,21 @@ int	get_middle_of_arr(t_stack *stack_a)
 		}
     }
 	value = tmp->stack[i / 2];
-	free(tmp->stack);
+	// free(tmp->stack);
 	return (value);
+}
+
+void	chunck_algo(t_stack *stack_a, t_stack *stack_b)
+{
+	int middle;
+	while (stack_a->top > 2)
+	{
+		middle = get_middle_of_arr(stack_a);
+		if (stack_a->stack[stack_a->top] < middle)
+			pb(stack_b, stack_a);
+		else
+			ra(stack_a);
+	}
+	if (stack_a->top == 2)
+		sort_three(stack_a);
 }

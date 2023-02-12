@@ -3,6 +3,26 @@
         "__bit_reference": "c",
         "__split_buffer": "c",
         "string": "c",
-        "vector": "c"
+        "vector": "c",
+        "push_swap.h": "c",
+        "__functional_base": "c",
+        "__node_handle": "c",
+        "algorithm": "c",
+        "atomic": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "deque": "c",
+        "__memory": "c",
+        "functional": "c",
+        "iterator": "c",
+        "limits": "c",
+        "locale": "c",
+        "memory": "c",
+        "optional": "c",
+        "random": "c",
+        "ratio": "c",
+        "system_error": "c",
+        "tuple": "c",
+        "type_traits": "c"
     }
 }

@@ -1,172 +1,162 @@
 #include "push_swap.h"
-/*
-void    best_position_in_stack_b(t_stack *stack_b, int value)
-{
-    int *arr = stack_b->stack;
-    int i = 0;
-    int res = 0;
-    int previes_val = 0;
-    int pos = 0;
-    while (i < stack_b->capacity)
-    {
-        res = value - arr[i];
-        if (res > 0 && res < previes_val)
-        {
-            previes_val = arr[i];
-            pos = i;
-        }
-    }
-}
-*/
 
-int getbigestnumber(t_stack *stack)
+t_retations	get_position_in_a(t_stack *stack_a, int value)
 {
-    int *arr = stack->stack;
-    int i = stack->top;
-    int lowest = arr[i];
-    while (i)
-    {
-        if (arr[i] > lowest)
-            lowest = arr[i];
-        i--;
-    }
-    return (lowest);
-}
+	int n;
+	int next_v;
+	
+	t_retations rt_a;
+	int i = stack_a->top;
+	int *arr = stack_a->stack;
 
-int getlowestnumber(t_stack *stack)
-{
-    int *arr = stack->stack;
-    int i = stack->top;
-    int lowest = arr[i];
-    while (i)
-    {
-        if (arr[i] < lowest)
-            lowest = arr[i];
-        i--;
-    }
-    return (lowest);
+	rt_a.rb = 0;
+	rt_a.rrb = 0;
+	rt_a.ra = 0;
+	rt_a.rra = 0;
+	rt_a.rr = 0;
+	rt_a.rrr = 0;
+
+	if (value < get_min_number(stack_a, &n))
+	{
+		rt_a.ra = stack_a->top - n;
+		rt_a.rra = n + 1;
+		return (rt_a);
+	}
+	next_v = get_max_number(stack_a, &n);
+	if (value > next_v)
+	{
+		rt_a.ra = stack_a->top - n;
+		rt_a.rra = n + 1;
+		return (rt_a);
+	}
+	while (i > -1)
+	{
+		if (next_v >= arr[i] && arr[i] > value)
+		{
+			next_v = arr[i];
+			n = i;
+		}
+		i--;
+	}
+	rt_a.ra = stack_a->top - n;
+	rt_a.rra = n + 1;
+	return (rt_a);
 }
 
-int getlowestnumber_idx(t_stack *stack)
+void	get_best_move(t_retations *operations, int len, int *arr)
 {
-    int *arr = stack->stack;
-    int i = stack->top;
-    int lowest = arr[i];
-    int n = 0;
-    while (i)
-    {
-        if (arr[i] < lowest)
-        {
-            lowest = arr[i];
-            n = i;
-        }
-        i--;
-    }
-    return (n);
+	// t_retations best_move;
+	// int index;
+	int res[4]= {0};
+	while (len > -1)
+	{
+		res[0] = operations[len].ra + operations[len].rb;
+		res[1] = operations[len].ra + operations[len].rrb;
+		res[2] = operations[len].rra + operations[len].rb;
+		res[3] = operations[len].rra + operations[len].rrb;
+		arr[len] = get_number_of_operation(res);
+		int idx = get_index_of_operation(res, 3);
+		if (idx == 0)
+		{
+				operations[len].rr = operations[len].rb;
+				if (operations[len].ra < operations[len].rb)
+						operations[len].rr = operations[len].ra;
+				operations[len].ra -= operations[len].rr;
+				operations[len].rb -= operations[len].rr;
+				operations[len].rrb = 0;
+				operations[len].rra = 0;
+		}
+		if (idx == 1)
+		{
+				operations[len].rb = 0;
+				operations[len].rra = 0;
+		}
+		if (idx == 2)
+		{
+				operations[len].rrb = 0;
+				operations[len].ra = 0;
+		}
+		if (idx == 3)
+		{
+				operations[len].rrr = operations[len].rrb;
+				if (operations[len].rra < operations[len].rrb)
+						operations[len].rrr = operations[len].rra;
+				operations[len].rra -= operations[len].rrr;
+				operations[len].rrb -= operations[len].rrr;
+				operations[len].rb = 0;
+				operations[len].ra = 0;
+		}
+		len--;
+	}
 }
 
-int how_many_iteration_in_b(t_stack *stack_b, int value)
+void	apply_rules(t_stack *stack_a, t_stack *stack_b, t_retations op)
 {
-    int *arr = stack_b->stack;
-    int i = stack_b->top;
-    int pre_v = stack_b->stack[getlowestnumber_idx(stack_b)];
-    //ft_printf("%d\n", pre_v);
-    int x = 0;
-    if (value < getlowestnumber(stack_b) || value > getbigestnumber(stack_b))
-        return 0;
-    while (i)
-    {
-        if (pre_v < arr[i] && arr[i] < value)
-        {
-            pre_v = arr[i];
-            x = i;
-        }
-        i--;
-    }
-    //ft_printf("pre_v == %d\n", pre_v);
-    if (stack_b->top / 2 < x)
-        x = stack_b->top - x;
-    else 
-        x++; 
-    return (x);
+	while (op.ra)
+	{
+		ra(stack_a);
+		op.ra--;
+	}
+	while (op.rb)
+	{
+		rb(stack_b);
+		op.rb--;
+	}
+	while (op.rra)
+	{
+		rra(stack_a);
+		op.rra--;
+	}
+	while (op.rrb)
+	{
+		rrb(stack_b);
+		op.rrb--;
+	}
+	while (op.rr)
+	{
+		rr(stack_a, stack_b);
+		op.rr--;
+	}
+	while (op.rrr)
+	{
+		rrr(stack_a, stack_b);
+		op.rrr--;
+	}
 }
 
-int how_many_iteration_in_a(int n, int top)
+void	push_to_a(t_stack *stack_a, t_stack *stack_b, t_retations *operations, int *arr)
 {
-    if (top / 2 < n)
-        return (top - n + 1);
-    return n + 1;
+	int idx = get_index_of_operation(arr, stack_b->top);
+	t_retations op = operations[idx];
+	apply_rules(stack_a, stack_b, op);
+	pa(stack_a, stack_b);
 }
 
-int   best_move(t_stack *stack_a, t_stack *stack_b)
+void	get_all_iterations(t_stack *stack_a, int *value, int top, t_retations *operations)
 {
-    int *arr = stack_a->stack;
-    //t_stack *tmp_stack = oncreate(stack_a->capacity);
-    pb(stack_b, stack_a);
-    pb(stack_b, stack_a);
-    if (stack_b->stack[0] < stack_b->stack[1])
-        sb(stack_b);
-    int iter_a;
-    int iter_b;
-    int i = 0;
-    int idx;
-    int a = 0;
-    int b = 0;
-    int middle;
-    int y = 0;
-    while (y++ < 2)
-    {
-       middle = stack_a->top / 2;
-       i = stack_a->top;
-       a = 0;
-       b = 0;
-	    iter_a = how_many_iteration_in_a(i, stack_a->top);
-	    iter_b = how_many_iteration_in_b(stack_b, arr[i]);
-        idx = iter_a + iter_b;
-	   while (i)
-	   {
-	       iter_a = how_many_iteration_in_a(i, stack_a->top);
-	       iter_b = how_many_iteration_in_b(stack_b, arr[i]);
-       //    ft_printf("%d\t == iter ==> %d\n", arr[i], iter_a + iter_b);
-           if (iter_a + iter_b < idx)
-           {
-               a = iter_a;
-               b = iter_b;
-               idx = a + b;
-               y = i;
-           }
-	       i--;
-	   }
-       //ft_printf("%d\n", a);
-       while (a > -1)
-       {
-           if (y > middle)
-               ra(stack_a);
-           else
-               rra(stack_a);
-           a--;
-       }
+	int i = top;
+	t_retations tmp;
+	while (i > -1)
+	{
+		tmp = get_position_in_a(stack_a, value[i]);
+		tmp.rb = top - i;
+		tmp.rrb = i + 1;
+		operations[i] = tmp;
+		i--;
+	}
+}
 
-       while (b > -1)
-       {
-           if (y > stack_b->top / 2)
-               rb(stack_b);
-           else
-               rrb(stack_b);
-           b--;
-       }
-       pb(stack_b, stack_a);
-        int j = 0;
-        while (j <= stack_b->top)
-            ft_printf("%d\n", stack_b->stack[j++]);
-        ft_printf("=========================================\n");
-       //while (!isbsorted(stack_b))
-           //rrb(stack_b);
-    }
-    i = 0;
-    while (i <= stack_b->top)
-        ft_printf("%d\n", stack_b->stack[i++]);
-    //if (stack_a->top < 3)
-      //  sort_three(stack_a);
-    return 0;
+
+void	push_all(t_stack *stack_a, t_stack *stack_b)
+{
+	int *arr = ft_calloc(stack_b->top + 1, sizeof(int));
+	t_retations *operations = ft_calloc(5, sizeof(t_retations));
+	while (stack_b->top > -1)
+	{
+		get_all_iterations(stack_a, stack_b->stack, stack_b->top, operations);
+		get_best_move(operations, stack_b->top, arr);
+		push_to_a(stack_a, stack_b, operations, arr);
+	}
+	// free(operations);
+	// free(arr);
 }
