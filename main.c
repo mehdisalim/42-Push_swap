@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/12 17:22:46 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/12 21:31:15 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void    setup_stack(t_stack **stack_a, t_stack **stack_b, char **numbers, int ca
     int i = -1;
     *stack_a = oncreate(capacity);
     *stack_b = oncreate(capacity);
-    clear(*stack_a);
-    clear(*stack_b);
     i = capacity;
     while (--i > -1)
     {
@@ -48,18 +46,11 @@ int main(int ac, char **av)
     int capacity = get_num_count(numbers); 
     t_stack *stack_a = NULL;
     t_stack *stack_b = NULL;
-    // int iter = 0;
     setup_stack(&stack_a, &stack_b, numbers, capacity);
-    // int value = get_position_in_b(stack_a, 50);
-    // push_all(stack_a, stack_b);
-    // ft_printf("%d\n", );
-    // best_move(stack_a, stack_b);
-//    int i = how_many_iteration_in_b(stack_a, 9);
-//    ft_printf("%d\n", i);
-   detect_sort(stack_a, stack_b);
-//    print_stack(stack_a);
-//    while (stack_a->top > -1)
-//         ft_printf("%d\n", pop(stack_a));
-//    print_stack(stack_a);
+    detect_sort(stack_a, stack_b);
+    free(stack_b->stack);
+    free(stack_a->stack);
+    free(stack_b);
+    free(stack_a);
     return (0);
 }

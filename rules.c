@@ -141,6 +141,7 @@ void    rrb(t_stack *stack_b)
     ft_rr(stack_b);
     ft_printf("rrb\n");
 }
+
 //  TODO:
 //      rrr : rra and rrb at the same time.
 void    rrr(t_stack *stack_a, t_stack *stack_b)

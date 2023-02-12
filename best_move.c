@@ -45,17 +45,16 @@ t_retations	get_position_in_a(t_stack *stack_a, int value)
 
 void	get_best_move(t_retations *operations, int len, int *arr)
 {
-	// t_retations best_move;
-	// int index;
 	int res[4]= {0};
+	int idx;
 	while (len > -1)
 	{
+		idx = 0;
 		res[0] = operations[len].ra + operations[len].rb;
 		res[1] = operations[len].ra + operations[len].rrb;
 		res[2] = operations[len].rra + operations[len].rb;
 		res[3] = operations[len].rra + operations[len].rrb;
-		arr[len] = get_number_of_operation(res);
-		int idx = get_index_of_operation(res, 3);
+		arr[len] = get_number_of_operation(res, &idx);
 		if (idx == 0)
 		{
 				operations[len].rr = operations[len].rb;
@@ -157,6 +156,6 @@ void	push_all(t_stack *stack_a, t_stack *stack_b)
 		get_best_move(operations, stack_b->top, arr);
 		push_to_a(stack_a, stack_b, operations, arr);
 	}
-	// free(operations);
-	// free(arr);
+	free(operations);
+	free(arr);
 }

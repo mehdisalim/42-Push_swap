@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:12:23 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/12 17:50:50 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/12 21:32:45 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,12 @@ void	sort_all(t_stack *stack_a, t_stack *stack_b)
 
 void	sort_stack_a(t_stack *stack_a)
 {
-	int idx;
+	int idx = 0;
 	get_min_number(stack_a, &idx);
 	int test;
 	if (idx < stack_a->top / 2)
 	{
+		idx++;
 		while (idx--)
 			rra(stack_a);
 	}

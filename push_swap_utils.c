@@ -95,7 +95,7 @@ int get_index_of_operation(int *res, int len)
 	return (idx);
 }
 
-int get_number_of_operation(int res[4])
+int get_number_of_operation(int res[4], int *index)
 {
 	int small = res[0];
 	int idx = 0;
@@ -109,5 +109,6 @@ int get_number_of_operation(int res[4])
 		}
 		i++;
 	}
+	*index = idx;
 	return (small);
 }

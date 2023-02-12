@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/12 17:35:01 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/12 18:33:35 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ int     check_isdigits(char *str);
 int     get_num_count(char   **num);
 void    ft_swap(char   **str1, char **str2);
 char    *get_all_args(int ac, char **av);
-void	ft_copy(t_stack *tmp, t_stack *src);
+void    ft_copy(int *dest, int *src, int len);
 int	    get_max_number(t_stack *stack, int *index);
 int	    get_min_number(t_stack *stack, int *index);
 int     get_index_of_operation(int *res, int len);
-int     get_number_of_operation(int res[4]);
+int     get_number_of_operation(int res[4], int *index);
 
 void	sort_stack_a(t_stack *stack_a);
 void    detect_sort(t_stack *stack_a, t_stack *stack_b);
@@ -64,7 +64,7 @@ t_retations get_position_in_a(t_stack *stack_b, int value);
 void    get_all_iterations(t_stack *stack_b, int *value, int top, t_retations *operations);
 void	push_all(t_stack *stack_a, t_stack *stack_b);
 int	    get_min_index(t_stack *stack);
-int	    get_middle_of_arr(t_stack *stack_a);
+int	    get_middle_of_arr(t_stack *stack_a, int *tmp);
 void	chunck_algo(t_stack *stack_a, t_stack *stack_b);
 
 
