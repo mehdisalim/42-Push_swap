@@ -6,15 +6,25 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/13 12:20:52 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/13 13:51:26 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void    free_2d_array(char  **numbers)
+{
+    int i;
+
+    i = -1;
+    while (numbers[++i])
+        free(numbers[i]);
+    free(numbers);
+}
+
 void    setup_stack(t_stack **stack_a, t_stack **stack_b, char **numbers, int capacity)
 {
-    int i = -1;
+    int i;
     *stack_a = oncreate(capacity);
     *stack_b = oncreate(capacity);
     i = capacity;
@@ -48,9 +58,12 @@ int main(int ac, char **av)
     t_stack *stack_b = NULL;
     setup_stack(&stack_a, &stack_b, numbers, capacity);
     detect_sort(stack_a, stack_b);
-    // free(stack_b->stack);
-    // free(stack_a->stack);
-    // free(stack_b);
-    // free(stack_a);
+    free(args);
+    free_2d_array(numbers);
+    free(stack_b->stack);
+    free(stack_a->stack);
+    free(stack_b);
+    free(stack_a);
+    while (1);
     return (0);
 }

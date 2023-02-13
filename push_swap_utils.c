@@ -18,20 +18,22 @@ int get_num_count(char   **num)
 
 void    ft_swap(char   **str1, char **str2)
 {
-    char    *tmp;
-
-    tmp = ft_strjoin(*str1, *str2);
-	if (!tmp)
+    *str1 = ft_strjoin(*str1, *str2);
+	if (!str1)
 	{
 		ft_putendl_fd("ft_strjoin error", 2);
 		exit(1);
 	}
-    *str1 = tmp;
 }
 
 char    *get_all_args(int ac, char **av)
 {
     char    *res = malloc(1);
+	if (!res)
+    {
+        ft_putendl_fd("Malloc faild", 2);
+        exit(1);
+    }
     int     i = 1;
     char    *space = " ";
 

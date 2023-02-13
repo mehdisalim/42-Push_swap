@@ -65,7 +65,7 @@ void	chunck_algo(t_stack *stack_a, t_stack *stack_b)
 		else
 			ra(stack_a);
 	}
-	free(tmp);
 	if (stack_a->top == 2)
 		sort_three(stack_a);
+	free(tmp);
 }
