@@ -21,7 +21,11 @@ void    ft_swap(char   **str1, char **str2)
     char    *tmp;
 
     tmp = ft_strjoin(*str1, *str2);
-    free(*str1);
+	if (!tmp)
+	{
+		ft_putendl_fd("ft_strjoin error", 2);
+		exit(1);
+	}
     *str1 = tmp;
 }
 

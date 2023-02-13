@@ -6,7 +6,7 @@
 #    By: esalim <esalim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 22:29:48 by esalim            #+#    #+#              #
-#    Updated: 2023/02/12 16:38:09 by esalim           ###   ########.fr        #
+#    Updated: 2023/02/13 12:22:49 by esalim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ all		:	$(NAME)
 $(NAME)	:	$(OBJS)
 	$(MAKE) libft
 	$(MAKE) ft_printf
-	$(CC) $(CFLAGS) $(OBJS) libft/libft.a ft_printf/libftprintf.a -o $(NAME)
+	$(CC) $(CFLAGS) -g $(OBJS) libft/libft.a ft_printf/libftprintf.a -o $(NAME)
 
 %.o 	:	%.c
 	@$(CC) $(CFLAGS) -c $^

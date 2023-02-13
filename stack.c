@@ -2,10 +2,20 @@
 
 t_stack *oncreate(int capacity)
 {
-    t_stack *stack = malloc(sizeof(t_stack));
+    t_stack *stack = ft_calloc(1, sizeof(t_stack));
+    if (!stack)
+    {
+        ft_putendl_fd("Malloc faild", 2);
+        exit(1);
+    }
     stack->capacity = capacity;
     stack->top = -1;
-    stack->stack = malloc(capacity * 4);
+    stack->stack = ft_calloc(capacity, sizeof(int));
+    if (!stack->stack)
+    {
+        ft_putendl_fd("Malloc faild", 2);
+        exit(1);
+    }
     return (stack);
 }
 

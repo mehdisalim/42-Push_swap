@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/12 21:31:15 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/13 12:20:52 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int main(int ac, char **av)
     t_stack *stack_b = NULL;
     setup_stack(&stack_a, &stack_b, numbers, capacity);
     detect_sort(stack_a, stack_b);
-    free(stack_b->stack);
-    free(stack_a->stack);
-    free(stack_b);
-    free(stack_a);
+    // free(stack_b->stack);
+    // free(stack_a->stack);
+    // free(stack_b);
+    // free(stack_a);
     return (0);
 }

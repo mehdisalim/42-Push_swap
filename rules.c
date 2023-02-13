@@ -18,7 +18,7 @@ void    ft_r(t_stack *stack)
 
     if (isEmpty(stack) || stack->capacity < 2)
         return ;
-    t_stack *tmp_arr = oncreate(stack->capacity - 1);
+    t_stack *tmp_arr = oncreate(stack->capacity);
     first = pop(stack);
     while(!isEmpty(stack))
         push(tmp_arr, pop(stack));
