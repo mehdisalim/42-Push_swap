@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/13 13:51:26 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/13 14:07:42 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ int main(int ac, char **av)
     free(stack_a->stack);
     free(stack_b);
     free(stack_a);
-    while (1);
+    // while (1);
     return (0);
 }
