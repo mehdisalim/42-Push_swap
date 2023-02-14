@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 16:21:06 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 11:56:23 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 12:49:01 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (*s2)
 		d[i++] = *s2++;
 	d[i] = 0;
-	free((char *)s1);
 	return (d);
 }

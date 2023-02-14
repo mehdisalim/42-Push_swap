@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 11:07:14 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 12:45:11 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_stack
     int     top;
     int     capacity;
     int     *stack;
+    int     *tmp_arr;
 }   t_stack;
 
 void    print_stack(t_stack *stack);

@@ -42,19 +42,13 @@ void	chunck_algo(t_stack *stack_a, t_stack *stack_b)
 {
 	int middle = 0;
 	int res = 0;
-	int len = stack_a->top;
-    int *tmp = malloc((len + 1) * 4);
-	if (!tmp)
-	{
-        ft_putendl_fd("Malloc faild", 2);
-        exit(1);
-    }
+
 	while (stack_a->top > 2)
 	{
 		if (res == 0)
 		{
-			ft_copy(tmp, stack_a->stack, stack_a->top);
-			middle = get_middle_of_arr(stack_a, tmp);
+			ft_copy(stack_a->tmp_arr, stack_a->stack, stack_a->top);
+			middle = get_middle_of_arr(stack_a, stack_a->tmp_arr);
 			res = get_less_than_middle(stack_a, middle);
 		}
 		if (stack_a->stack[stack_a->top] <= middle)
@@ -67,5 +61,4 @@ void	chunck_algo(t_stack *stack_a, t_stack *stack_b)
 	}
 	if (stack_a->top == 2)
 		sort_three(stack_a);
-	free(tmp);
 }

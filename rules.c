@@ -15,33 +15,33 @@ void    ft_s(t_stack *stack)
 void    ft_r(t_stack *stack)
 {
     int first;
+    int len = 0;
 
     if (isEmpty(stack) || stack->capacity < 2)
         return ;
-    t_stack *tmp_arr = oncreate(stack->capacity);
+    ft_bzero(stack->tmp_arr, stack->capacity);
     first = pop(stack);
-    while(!isEmpty(stack))
-        push(tmp_arr, pop(stack));
+    while(stack->top > -1)
+        stack->tmp_arr[len++] = pop(stack);
     push(stack, first);
-    while (!isEmpty(tmp_arr))
-        push(stack, pop(tmp_arr));
-    free(tmp_arr);
+    while (--len > -1)
+        push(stack, stack->tmp_arr[len]);
 }
 
 void    ft_rr(t_stack *stack)
 {
     int last;
+    int len = 0;
 
     if (isEmpty(stack))
         return ;
-    t_stack *tmp_arr = oncreate(stack->capacity);
-    while(!isEmpty(stack))
-        push(tmp_arr, pop(stack));
-    last = pop(tmp_arr);
-    while (!isEmpty(tmp_arr))
-        push(stack, pop(tmp_arr));
+    ft_bzero(stack->tmp_arr, stack->capacity);
+    while(stack->top > 0)
+        stack->tmp_arr[len++] = pop(stack);
+    last = pop(stack);
+    while (--len > -1)
+        push(stack, stack->tmp_arr[len]);
     push(stack, last);
-    free(tmp_arr);
 }
 
 //TODO:

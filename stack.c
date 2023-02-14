@@ -11,6 +11,7 @@ t_stack *oncreate(int capacity)
     stack->capacity = capacity;
     stack->top = -1;
     stack->stack = ft_calloc(capacity, sizeof(int));
+    stack->tmp_arr = ft_calloc(stack->capacity, sizeof(int));
     if (!stack->stack)
     {
         ft_putendl_fd("Malloc faild", 2);

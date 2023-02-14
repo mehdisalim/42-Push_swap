@@ -16,52 +16,45 @@ int get_num_count(char   **num)
     return (i);
 }
 
-// char    *ft_join(char   *str1, char *str3)
-// {
-// 	char	*res;
-//     res = ft_strjoin(str1, " ");
-// 	// free(str1);
-// 	str1 = ft_strjoin(res, str3);
-// 	// free(res);
-// 	if (!str1)
-// 	{
-// 		ft_putendl_fd("ft_strjoin error", 2);
-// 		exit(1);
-// 	}
-// 	return (str1);
-// }
 
-char	*my_strjoin(char const *s1, char const *s2)
+size_t	my_strlcat(char *dst, const char *src, size_t n)
 {
-	char	*d;
-	int		i;
-	int		j;
+	size_t	j;
+	size_t	i;
+	size_t	srclen;
+	size_t	destlen;
 
-	i = 0;
 	j = 0;
-	if (!s1)
-		return (0);
-	d = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 2);
-	if (!d)
-		return (0);
-	while (s1[j])
-		d[i++] = s1[j++];
-	d[i++] = ' ';
-	while (*s2)
-		d[i++] = *s2++;
-	d[i] = 0;
-	free((char *)s1);
-	return (d);
+	i = 0;
+	srclen = ft_strlen((char *)src);
+	if ((dst || src) && !n)
+		return (srclen);
+	destlen = ft_strlen((char *)dst);
+	if (destlen >= n || !n)
+		return (n + srclen);
+	while (dst[j])
+		j++;
+	dst[j++] = ' ';
+	while (src[i] && j + 1 < n)
+		dst[j++] = src[i++];
+	dst[j] = 0;
+	return (srclen + destlen);
 }
 
 char    *get_all_args(int ac, char **av)
 {
-    char    *res = malloc(1);
+    char    *res;
     int     i = 0;
+	long len = 1;
     if (ac == 2)
         return (ft_strdup(av[1]));
+	while (++i < ac)
+		len += ft_strlen(av[i]);
+	len += i;
+	res = malloc(len);
+	i = 0;
     while (++i < ac)
-        res = my_strjoin(res, av[i]);
+        my_strlcat(res, av[i], len);
     return (res);
 }
 
