@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:24:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 19:27:13 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 19:30:43 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ void    rr(t_stack *stack_a, t_stack *stack_b)
 {
     ft_r(stack_a);
     ft_r(stack_b);
-    ft_printf("rr\n");
+    ft_putendl_fd("rr", 1);
 }
 
 void    rrr(t_stack *stack_a, t_stack *stack_b)
 {
     ft_rr(stack_a);
     ft_rr(stack_b);
-    ft_printf("rrr\n");
+    ft_putendl_fd("rrr", 1);
 }
 
