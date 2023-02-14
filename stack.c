@@ -4,19 +4,13 @@ t_stack *oncreate(int capacity)
 {
     t_stack *stack = ft_calloc(1, sizeof(t_stack));
     if (!stack)
-    {
-        ft_putendl_fd("Malloc faild", 2);
-        exit(1);
-    }
+        return (0);
     stack->capacity = capacity;
     stack->top = -1;
     stack->stack = ft_calloc(capacity, sizeof(int));
     stack->tmp_arr = ft_calloc(stack->capacity, sizeof(int));
     if (!stack->stack || !stack->tmp_arr)
-    {
-        ft_putendl_fd("Malloc faild", 2);
-        exit(1);
-    }
+        return (0);
     return (stack);
 }
 

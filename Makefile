@@ -6,7 +6,7 @@
 #    By: esalim <esalim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 22:29:48 by esalim            #+#    #+#              #
-#    Updated: 2023/02/14 19:27:51 by esalim           ###   ########.fr        #
+#    Updated: 2023/02/14 19:47:36 by esalim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS	=	${RULES_DIR}/rules_push.c \
 			${UTILS_DIR}/utils_sort.c \
 			${UTILS_DIR}/utils_checking_args.c \
 			${UTILS_DIR}/utils_push_swap.c \
-			stack.c push_swap.c sort.c free_leaks.c
+			stack.c push_swap.c sort.c destroy_program.c
 			
 OBJS	=	$(SRCS:.c=.o)
 

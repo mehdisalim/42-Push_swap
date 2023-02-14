@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 19:10:09 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 19:47:51 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void    print_stack(t_stack *stack);
 
 void    free_stack(t_stack *stack_a, t_stack *stack_b);
 void    free_2d_array(char  **numbers);
+void    destroy_program(t_stack *stack_a, t_stack *stack_b, char **numbers);
 
 int	check_is_duplicated(t_stack *stack);
 

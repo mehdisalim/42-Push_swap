@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:08:15 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 19:08:17 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 20:33:55 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,8 +160,13 @@ void	get_all_iterations(t_stack *stack_a, int *value, int top, t_retations *oper
 
 void	push_all(t_stack *stack_a, t_stack *stack_b)
 {
-	int *arr = ft_calloc(stack_b->top + 1, sizeof(int));
-	t_retations *operations = ft_calloc(5, sizeof(t_retations));
+	t_retations *operations;
+	int *arr;
+	
+	arr = ft_calloc(stack_b->top + 1, sizeof(int));
+	operations = ft_calloc(5, sizeof(t_retations));
+	if (!arr || !operations)
+		destroy_program(stack_a, stack_b, NULL);
 	while (stack_b->top > -1)
 	{
 		get_all_iterations(stack_a, stack_b->stack, stack_b->top, operations);
