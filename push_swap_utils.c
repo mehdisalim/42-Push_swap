@@ -16,35 +16,52 @@ int get_num_count(char   **num)
     return (i);
 }
 
-void    ft_swap(char   **str1, char **str2)
+// char    *ft_join(char   *str1, char *str3)
+// {
+// 	char	*res;
+//     res = ft_strjoin(str1, " ");
+// 	// free(str1);
+// 	str1 = ft_strjoin(res, str3);
+// 	// free(res);
+// 	if (!str1)
+// 	{
+// 		ft_putendl_fd("ft_strjoin error", 2);
+// 		exit(1);
+// 	}
+// 	return (str1);
+// }
+
+char	*my_strjoin(char const *s1, char const *s2)
 {
-    *str1 = ft_strjoin(*str1, *str2);
-	if (!str1)
-	{
-		ft_putendl_fd("ft_strjoin error", 2);
-		exit(1);
-	}
+	char	*d;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	if (!s1)
+		return (0);
+	d = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 2);
+	if (!d)
+		return (0);
+	while (s1[j])
+		d[i++] = s1[j++];
+	d[i++] = ' ';
+	while (*s2)
+		d[i++] = *s2++;
+	d[i] = 0;
+	free((char *)s1);
+	return (d);
 }
 
 char    *get_all_args(int ac, char **av)
 {
     char    *res = malloc(1);
-	if (!res)
-    {
-        ft_putendl_fd("Malloc faild", 2);
-        exit(1);
-    }
-    int     i = 1;
-    char    *space = " ";
-
+    int     i = 0;
     if (ac == 2)
         return (ft_strdup(av[1]));
-    while (i < ac)
-    {
-        ft_swap(&res, &space);
-        ft_swap(&res, &av[i]);
-        i++;
-    }
+    while (++i < ac)
+        res = my_strjoin(res, av[i]);
     return (res);
 }
 

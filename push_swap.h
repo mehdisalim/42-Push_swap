@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/13 12:20:30 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 11:07:14 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void    print_stack(t_stack *stack);
 //  PUSH SWAP UTILS
 int     check_isdigits(char *str);
 int     get_num_count(char   **num);
-void    ft_swap(char   **str1, char **str2);
+char    *ft_join(char   *str1, char *str3);
 char    *get_all_args(int ac, char **av);
 void    ft_copy(int *dest, int *src, int len);
 int	    get_max_number(t_stack *stack, int *index);
