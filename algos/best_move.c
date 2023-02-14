@@ -6,59 +6,42 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:08:15 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 20:33:55 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 23:29:42 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_retations	get_position_in_a(t_stack *stack_a, int value)
+void	get_right_operations(t_retations **operations, int idx, int len)
 {
-	int n;
-	int next_v;
-	
-	t_retations rt_a;
-	int i = stack_a->top;
-	int *arr = stack_a->stack;
-
-	rt_a.rb = 0;
-	rt_a.rrb = 0;
-	rt_a.ra = 0;
-	rt_a.rra = 0;
-	rt_a.rr = 0;
-	rt_a.rrr = 0;
-
-	if (value < get_min_number(stack_a, &n))
+	if (idx == 1)
 	{
-		rt_a.ra = stack_a->top - n;
-		rt_a.rra = n + 1;
-		return (rt_a);
+		(*operations)[len].rb = 0;
+		(*operations)[len].rra = 0;
 	}
-	next_v = get_max_number(stack_a, &n);
-	if (value > next_v)
+	else if (idx == 2)
 	{
-		rt_a.ra = stack_a->top - n;
-		rt_a.rra = n + 1;
-		return (rt_a);
+		(*operations)[len].rrb = 0;
+		(*operations)[len].ra = 0;
 	}
-	while (i > -1)
+	else if (idx == 3)
 	{
-		if (next_v >= arr[i] && arr[i] > value)
-		{
-			next_v = arr[i];
-			n = i;
-		}
-		i--;
+		(*operations)[len].rrr = (*operations)[len].rrb;
+		if ((*operations)[len].rra < (*operations)[len].rrb)
+				(*operations)[len].rrr = (*operations)[len].rra;
+		(*operations)[len].rra -= (*operations)[len].rrr;
+		(*operations)[len].rrb -= (*operations)[len].rrr;
+		(*operations)[len].rb = 0;
+		(*operations)[len].ra = 0;
 	}
-	rt_a.ra = stack_a->top - n;
-	rt_a.rra = n + 1;
-	return (rt_a);
 }
 
 void	get_best_move(t_retations *operations, int len, int *arr)
 {
-	int res[4]= {0};
-	int idx;
+	int	res[4];
+	int	idx;
+
+	ft_bzero(res, sizeof(int) * 4);
 	while (len > -1)
 	{
 		idx = 0;
@@ -69,100 +52,51 @@ void	get_best_move(t_retations *operations, int len, int *arr)
 		arr[len] = get_number_of_operation(res, &idx);
 		if (idx == 0)
 		{
-				operations[len].rr = operations[len].rb;
-				if (operations[len].ra < operations[len].rb)
-						operations[len].rr = operations[len].ra;
-				operations[len].ra -= operations[len].rr;
-				operations[len].rb -= operations[len].rr;
-				operations[len].rrb = 0;
-				operations[len].rra = 0;
+			operations[len].rr = operations[len].rb;
+			if (operations[len].ra < operations[len].rb)
+					operations[len].rr = operations[len].ra;
+			operations[len].ra -= operations[len].rr;
+			operations[len].rb -= operations[len].rr;
+			operations[len].rrb = 0;
+			operations[len].rra = 0;
 		}
-		if (idx == 1)
-		{
-				operations[len].rb = 0;
-				operations[len].rra = 0;
-		}
-		if (idx == 2)
-		{
-				operations[len].rrb = 0;
-				operations[len].ra = 0;
-		}
-		if (idx == 3)
-		{
-				operations[len].rrr = operations[len].rrb;
-				if (operations[len].rra < operations[len].rrb)
-						operations[len].rrr = operations[len].rra;
-				operations[len].rra -= operations[len].rrr;
-				operations[len].rrb -= operations[len].rrr;
-				operations[len].rb = 0;
-				operations[len].ra = 0;
-		}
+		get_right_operations(&operations, idx, len);
 		len--;
 	}
 }
 
-void	apply_rules(t_stack *stack_a, t_stack *stack_b, t_retations op)
+void	push_to_a(t_stack *s_a, t_stack *s_b, t_retations *oper, int *arr)
 {
-	while (op.ra)
-	{
-		ra(stack_a);
-		op.ra--;
-	}
-	while (op.rb)
-	{
-		rb(stack_b);
-		op.rb--;
-	}
-	while (op.rra)
-	{
-		rra(stack_a);
-		op.rra--;
-	}
-	while (op.rrb)
-	{
-		rrb(stack_b);
-		op.rrb--;
-	}
-	while (op.rr)
-	{
-		rr(stack_a, stack_b);
-		op.rr--;
-	}
-	while (op.rrr)
-	{
-		rrr(stack_a, stack_b);
-		op.rrr--;
-	}
+	t_retations	op;
+	int			idx;
+
+	idx = get_index_of_operation(arr, s_b->top);
+	op = oper[idx];
+	apply_rules(s_a, s_b, op);
+	pa(s_a, s_b);
 }
 
-void	push_to_a(t_stack *stack_a, t_stack *stack_b, t_retations *operations, int *arr)
+void	get_all_iterations(t_stack *s_a, int *value, int top, t_retations *op)
 {
-	int idx = get_index_of_operation(arr, stack_b->top);
-	t_retations op = operations[idx];
-	apply_rules(stack_a, stack_b, op);
-	pa(stack_a, stack_b);
-}
+	t_retations	tmp;
+	int			i;
 
-void	get_all_iterations(t_stack *stack_a, int *value, int top, t_retations *operations)
-{
-	int i = top;
-	t_retations tmp;
+	i = top;
 	while (i > -1)
 	{
-		tmp = get_position_in_a(stack_a, value[i]);
+		tmp = get_position_in_a(s_a, value[i]);
 		tmp.rb = top - i;
 		tmp.rrb = i + 1;
-		operations[i] = tmp;
+		op[i] = tmp;
 		i--;
 	}
 }
 
-
-void	push_all(t_stack *stack_a, t_stack *stack_b)
+void	best_move(t_stack *stack_a, t_stack *stack_b)
 {
-	t_retations *operations;
-	int *arr;
-	
+	t_retations	*operations;
+	int			*arr;
+
 	arr = ft_calloc(stack_b->top + 1, sizeof(int));
 	operations = ft_calloc(5, sizeof(t_retations));
 	if (!arr || !operations)

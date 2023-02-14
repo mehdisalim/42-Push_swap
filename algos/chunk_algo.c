@@ -6,41 +6,49 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:08:21 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 19:08:22 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 23:06:42 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void    ft_copy(int *dest, int *src, int len)
+void	ft_copy(int *dest, int *src, int len)
 {
-	int i = -1;
+	int	i;
+
+	i = -1;
 	while (++i <= len)
 		dest[i] = src[i];
 }
 
-int		get_middle_of_arr(t_stack *stack_a, int *tmp)
+int	get_middle_of_arr(t_stack *stack_a, int *tmp)
 {
-    int value = 0;
-    int i = -1;
-    while (++i <= stack_a->top)
-    {
-        if (i + 1 <= stack_a->top && tmp[i] > tmp[i + 1])
+	int	value;
+	int	i;
+
+	value = 0;
+	i = -1;
+	while (++i <= stack_a->top)
+	{
+		if (i + 1 <= stack_a->top && tmp[i] > tmp[i + 1])
 		{
 			value = tmp[i];
 			tmp[i] = tmp[i + 1];
 			tmp[i + 1] = value;
 			i = -1;
 		}
-    }
+	}
 	value = tmp[i / 2];
 	return (value);
 }
 
-int		get_less_than_middle(t_stack *stack_a, int value)
+int	get_less_than_middle(t_stack *stack_a, int value)
 {
-	int res = 0;
-	int i = 0;
+	int	res;
+	int	i;
+
+	res = 0;
+	i = 0;
 	while (i <= stack_a->top)
 	{
 		if (stack_a->stack[i] < value)
@@ -52,9 +60,11 @@ int		get_less_than_middle(t_stack *stack_a, int value)
 
 void	chunck_algo(t_stack *stack_a, t_stack *stack_b)
 {
-	int middle = 0;
-	int res = 0;
+	int	middle;
+	int	res;
 
+	middle = 0;
+	res = 0;
 	while (stack_a->top > 2)
 	{
 		if (res == 0)

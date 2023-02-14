@@ -6,26 +6,29 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:16:29 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 19:08:52 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 23:38:37 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int get_num_count(char   **num)
+int	get_num_count(char **num)
 {
-	int i = -1;
-	while (num[++i]);
+	int	i;
+
+	i = 0;
+	while (num[i])
+		i++;
 	return (i);
 }
 
-int check_isdigits(char *str)
+int	check_isdigits(char *str)
 {
 	int	i;
-	
+
 	i = 0;
 	if (str[i] == '+' || str[i] == '-')
-			i++;
+		i++;
 	if (!str[i])
 		return (0);
 	while (str[i])
@@ -58,11 +61,14 @@ size_t	my_strlcat(char *dst, const char *src, size_t n)
 	return (srclen + destlen);
 }
 
-char    *get_all_args(int ac, char **av)
+char	*get_all_args(int ac, char **av)
 {
-	char    *res;
-	int     i = 0;
-	long len = 1;
+	char	*res;
+	int		i;
+	long	len;
+
+	i = 0;
+	len = 1;
 	if (ac == 2)
 		return (ft_strdup(av[1]));
 	while (++i < ac)

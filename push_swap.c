@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 20:32:28 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 23:49:05 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,17 @@ void	setup_stack(t_stack **s_a, t_stack **s_b, char **num, int cp)
 	}
 }
 
-void    detect_sort(t_stack *stack_a, t_stack *stack_b)
+void	detect_sort(t_stack *stack_a, t_stack *stack_b)
 {
-    if (stack_a->capacity == 2)
-        sort_two(stack_a);
-    else if (stack_a->capacity == 3)
-        sort_three(stack_a);
-     else if (stack_a->capacity == 4)
-        sort_four(stack_a, stack_b);
-     else if (stack_a->capacity == 5)
-        sort_five(stack_a, stack_b);
-    else if (stack_a->capacity > 5)
+	if (stack_a->capacity == 2)
+		sort_two(stack_a);
+	else if (stack_a->capacity == 3)
+		sort_three(stack_a);
+	else if (stack_a->capacity == 4)
+		sort_four(stack_a, stack_b);
+	else if (stack_a->capacity == 5)
+		sort_five(stack_a, stack_b);
+	else if (stack_a->capacity > 5)
 		sort_all(stack_a, stack_b);
 }
 
@@ -66,7 +66,7 @@ int	main(int ac, char **av)
 		destroy_program(stack_a, stack_b, numbers);
 	if (!isasorted(stack_a))
 		detect_sort(stack_a, stack_b);
-    free_2d_array(numbers);
-    free_stack(stack_a, stack_b);
+	free_2d_array(numbers);
+	free_stack(stack_a, stack_b);
 	return (0);
 }

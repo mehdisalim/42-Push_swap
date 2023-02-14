@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:12:23 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 18:34:58 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 23:50:37 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	sort_two(t_stack *stack_a)
 
 void	sort_three(t_stack *stack_a)
 {
-	int *arr = stack_a->stack;
+	int	*arr;
+
+	arr = stack_a->stack;
 	if (arr[2] > arr[1] && arr[0] > arr[1] && arr[2] < arr[0])
 		sa(stack_a);
 	if (arr[2] > arr[1] && arr[1] > arr[0])
@@ -37,17 +39,17 @@ void	sort_three(t_stack *stack_a)
 	}
 	if (arr[2] < arr[1] && arr[0] < arr[1] && arr[2] > arr[0])
 		rra(stack_a);
-
 	return ;
 }
 
 void	sort_four(t_stack *stack_a, t_stack *stack_b)
 {
-	int idx;
+	int	idx;
+
 	if (isasorted(stack_a))
 		return ;
-	get_min_number(stack_a, &idx); 
-	if (idx == stack_a->top) 
+	get_min_number(stack_a, &idx);
+	if (idx == stack_a->top)
 		pb(stack_b, stack_a);
 	else if (idx == 0)
 	{
@@ -72,11 +74,12 @@ void	sort_four(t_stack *stack_a, t_stack *stack_b)
 
 void	sort_five(t_stack *stack_a, t_stack *stack_b)
 {
-	int idx ;
+	int	idx;
+
 	if (isasorted(stack_a))
 		return ;
 	get_min_number(stack_a, &idx);
-	if (idx == stack_a->top) 
+	if (idx == stack_a->top)
 		pb(stack_b, stack_a);
 	else if (idx == 0)
 	{
@@ -108,6 +111,6 @@ void	sort_all(t_stack *stack_a, t_stack *stack_b)
 {
 	chunck_algo(stack_a, stack_b);
 	sort_three(stack_a);
-    push_all(stack_a, stack_b);
+	best_move(stack_a, stack_b);
 	sort_stack_a(stack_a);
 }

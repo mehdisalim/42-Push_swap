@@ -6,7 +6,7 @@
 #    By: esalim <esalim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 22:29:48 by esalim            #+#    #+#              #
-#    Updated: 2023/02/14 19:47:36 by esalim           ###   ########.fr        #
+#    Updated: 2023/02/14 23:31:05 by esalim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS	=	${RULES_DIR}/rules_push.c \
 			${RULES_DIR}/rules_swap.c \
 			${ALGO_DIR}/best_move.c \
 			${ALGO_DIR}/chunk_algo.c \
+			${ALGO_DIR}/apply_rules.c \
 			${UTILS_DIR}/utils_sort.c \
 			${UTILS_DIR}/utils_checking_args.c \
 			${UTILS_DIR}/utils_push_swap.c \

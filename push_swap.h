@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 19:47:51 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 23:54:44 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void    free_2d_array(char  **numbers);
 void    destroy_program(t_stack *stack_a, t_stack *stack_b, char **numbers);
 
 int	check_is_duplicated(t_stack *stack);
+void	apply_rules(t_stack *stack_a, t_stack *stack_b, t_retations op);
 
 //  PUSH SWAP UTILS
 int     check_isdigits(char *str);
@@ -57,18 +58,16 @@ int     get_number_of_operation(int res[4], int *index);
 
 void	sort_stack_a(t_stack *stack_a);
 void    detect_sort(t_stack *stack_a, t_stack *stack_b);
-int     isbsorted(t_stack *stack_b);
 int     isasorted(t_stack *stack_a);
 void    sort_two(t_stack *stack_a);
 void    sort_three(t_stack *stack_a);
 void    sort_four(t_stack *stack_a, t_stack *stack_b);
 void    sort_five(t_stack *stack_a, t_stack *stack_b);
 void    sort_all(t_stack *stack_a, t_stack *stack_b);
-int     best_move(t_stack *stack_a, t_stack *stack_b);
 int     how_many_iteration_in_b(t_stack *stack_b, int value);
 t_retations get_position_in_a(t_stack *stack_b, int value);
 void    get_all_iterations(t_stack *stack_b, int *value, int top, t_retations *operations);
-void	push_all(t_stack *stack_a, t_stack *stack_b);
+void	best_move(t_stack *stack_a, t_stack *stack_b);
 int	    get_min_index(t_stack *stack);
 int	    get_middle_of_arr(t_stack *stack_a, int *tmp);
 void	chunck_algo(t_stack *stack_a, t_stack *stack_b);
@@ -76,11 +75,9 @@ void	chunck_algo(t_stack *stack_a, t_stack *stack_b);
 
 //  STACK IMPLIMENTATION
 t_stack *oncreate(int capacity);
-int     isFull(t_stack *stack);
-int     isEmpty(t_stack *stack);
 void    push(t_stack *stack, int content);
 int     pop(t_stack *stack);
-void    clear(t_stack *stack);
+int     is_empty(t_stack *stack);
 
 //  PUSH SWAP RULES
 void    ft_r(t_stack *stack);
