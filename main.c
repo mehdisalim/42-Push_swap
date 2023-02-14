@@ -6,66 +6,77 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 13:10:54 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 17:46:25 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    free_2d_array(char  **numbers)
+int	check_is_duplicated(t_stack *stack)
 {
-    int i;
-
-    i = -1;
-    while (numbers[++i])
-        free(numbers[i]);
-    free(numbers);
+	int i = 0;
+	int j = 0;
+	while (i <= stack->top)
+	{
+		j = i + 1;
+		while (j <= stack->top)
+		{
+			if (stack->stack[i] == stack->stack[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
-void    setup_stack(t_stack **stack_a, t_stack **stack_b, char **numbers, int capacity)
+void	setup_stack(t_stack **s_a, t_stack **s_b, char **num, int cp)
 {
-    int i;
-    *stack_a = oncreate(capacity);
-    *stack_b = oncreate(capacity);
-    i = capacity;
-    while (--i > -1)
-    {
-        if (!check_isdigits(numbers[i]))
-        {
-            ft_putstr_fd("Error: the argement should be a digits\n", 2);
-            exit(1);
-        }
-        push(*stack_a, ft_atoi(numbers[i]));
-    }
+	int	i;
+	int	check;
+	long	number;
+
+	*s_a = oncreate(cp);
+	*s_b = oncreate(cp);
+	i = cp;
+	while (--i > -1)
+	{
+		check = check_isdigits(num[i]);
+		number = ft_atoi(num[i]);
+		// ft_printf("%d\n", number);
+		if ((number > 2147483647 || number < -2147483648) || !check)
+		{
+			free_stack(*s_a, *s_b);
+			ft_putstr_fd("Error\n", 2);
+			exit(1);
+		}
+		push(*s_a, number);
+	}
 }
 
-void    print_stack(t_stack *stack)
+int	main(int ac, char **av)
 {
-    int *arr = stack->stack;
-    int i = stack->top + 1;
-    ft_printf("\n");
-    while (--i > -1)
-        ft_printf("%d\n",arr[i]);
-    ft_printf("\n");
-}
+	char	*args;
+	char	**numbers;
+	int		capacity;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
-int main(int ac, char **av)
-{
-    char    *args = get_all_args(ac, av);
-    char    **numbers = ft_split(args, ' ');
-    int capacity = get_num_count(numbers); 
-    t_stack *stack_a = NULL;
-    t_stack *stack_b = NULL;
-    setup_stack(&stack_a, &stack_b, numbers, capacity);
-    detect_sort(stack_a, stack_b);
-    free(args);
-    free_2d_array(numbers);
-    free(stack_b->stack);
-    free(stack_a->stack);
-    free(stack_b->tmp_arr);
-    free(stack_a->tmp_arr);
-    free(stack_b);
-    free(stack_a);
-    while (1);
-    return (0);
+	args = get_all_args(ac, av);
+	numbers = ft_split(args, ' ');
+	free(args);
+	capacity = get_num_count(numbers);
+	stack_a = NULL;
+	stack_b = NULL;
+	setup_stack(&stack_a, &stack_b, numbers, capacity);
+	if (check_is_duplicated(stack_a))
+	{
+		free_stack(stack_a, stack_b);
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
+	}
+	detect_sort(stack_a, stack_b);
+	free_2d_array(numbers);
+	free_stack(stack_a, stack_b);
+	return (0);
 }

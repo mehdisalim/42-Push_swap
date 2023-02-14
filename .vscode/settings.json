@@ -26,5 +26,8 @@
         "type_traits": "c",
         "ft_printf.h": "c",
         "libft.h": "c"
+    },
+    "[c]": {
+        "editor.defaultFormatter": "keyhr.42-c-format"
     }
 }

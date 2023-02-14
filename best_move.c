@@ -148,7 +148,7 @@ void	get_all_iterations(t_stack *stack_a, int *value, int top, t_retations *oper
 
 void	push_all(t_stack *stack_a, t_stack *stack_b)
 {
-	int *arr = ft_calloc(stack_b->top + 1, sizeof(arr));
+	int *arr = ft_calloc(stack_b->top + 1, sizeof(int));
 	t_retations *operations = ft_calloc(5, sizeof(t_retations));
 	while (stack_b->top > -1)
 	{

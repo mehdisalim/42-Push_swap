@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 12:45:11 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 16:23:11 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ typedef struct s_stack
 }   t_stack;
 
 void    print_stack(t_stack *stack);
+
+void    free_stack(t_stack *stack_a, t_stack *stack_b);
+void    free_2d_array(char  **numbers);
 
 //  PUSH SWAP UTILS
 int     check_isdigits(char *str);

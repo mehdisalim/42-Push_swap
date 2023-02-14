@@ -6,7 +6,7 @@
 #    By: esalim <esalim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 22:29:48 by esalim            #+#    #+#              #
-#    Updated: 2023/02/13 12:22:49 by esalim           ###   ########.fr        #
+#    Updated: 2023/02/14 16:22:48 by esalim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	=	push_swap
 
 CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror
-SRCS	=	rules.c stack.c push_swap_utils.c push_swap.c sort.c main.c best_move.c chunk_algo.c #debugger.c
+SRCS	=	rules.c stack.c push_swap_utils.c push_swap.c sort.c main.c best_move.c chunk_algo.c free_leaks.c
 OBJS	=	$(SRCS:.c=.o)
 
 RM		=	rm -rf

@@ -2,9 +2,15 @@
 
 int check_isdigits(char *str)
 {
-    int i = -1;
-    while (str[++i])
-        if (ft_isdigit(str[i]) == 0 && str[0] != '+' && str[0] != '-')
+    int i;
+	
+	i = 0;
+	if (str[i] == '+' || str[i] == '-')
+            i++;
+	if (!str[i])
+		return (0);
+    while (str[i])
+        if (ft_isdigit(str[i++]) == 0)
             return (0);
     return (1);
 }

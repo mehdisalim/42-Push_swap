@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   free_leaks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 20:16:59 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 17:25:25 by esalim           ###   ########.fr       */
+/*   Created: 2023/02/14 16:16:40 by esalim            #+#    #+#             */
+/*   Updated: 2023/02/14 16:21:54 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-long	ft_atoi(const char *str)
+void    free_2d_array(char  **numbers)
 {
-	int		i;
-	long	result;
-	int		sign;
+    int i;
 
-	i = 0;
-	result = 0;
-	sign = 1;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-' )
-			sign *= -1;
-		i++;
-	}
-	while (str[i] && ft_isdigit(str[i]))
-	{
-		result = (result * 10) + str[i] - 48;
-		i++;
-	}
-	return (result * sign);
+    i = -1;
+    while (numbers[++i])
+        free(numbers[i]);
+    free(numbers);
 }
+
+void    free_stack(t_stack *stack_a, t_stack *stack_b)
+{
+    free(stack_b->stack);
+    free(stack_a->stack);
+    free(stack_b->tmp_arr);
+    free(stack_a->tmp_arr);
+    free(stack_b);
+    free(stack_a);
+}
+
