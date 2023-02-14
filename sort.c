@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:12:23 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/12 21:32:45 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 18:34:58 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,23 +110,4 @@ void	sort_all(t_stack *stack_a, t_stack *stack_b)
 	sort_three(stack_a);
     push_all(stack_a, stack_b);
 	sort_stack_a(stack_a);
-}
-
-void	sort_stack_a(t_stack *stack_a)
-{
-	int idx = 0;
-	get_min_number(stack_a, &idx);
-	int test;
-	if (idx < stack_a->top / 2)
-	{
-		idx++;
-		while (idx--)
-			rra(stack_a);
-	}
-	else
-	{
-		test = stack_a->top - idx;
-		while (test--)
-			ra(stack_a);
-	}
 }

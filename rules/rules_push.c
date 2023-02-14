@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   rules_push.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 14:41:24 by esalim            #+#    #+#             */
-/*   Updated: 2022/10/19 12:12:25 by esalim           ###   ########.fr       */
+/*   Created: 2023/02/14 19:23:15 by esalim            #+#    #+#             */
+/*   Updated: 2023/02/14 19:27:38 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../push_swap.h"
 
-# include <unistd.h>
-# include <stdarg.h>
+void    pa(t_stack *stack_a, t_stack *stack_b)
+{
+    if (isEmpty(stack_b))
+        return ;
+    push(stack_a, pop(stack_b));
+    ft_printf("pa\n");
+}
 
-char	*ft_strchr(const char *str, int c);
-void	ft_putchar(char c, int *count);
-void	ft_putstr(char *str, int *count);
-void	ft_putnbr(long nbr, int isunsigned, int *count);
-void	ft_putnbr_base(long nbr, char *base, int islong, int *count);
-int		ft_printf(const char *str, ...);
-
-#endif
+void    pb(t_stack *stack_b, t_stack *stack_a)
+{
+    if (isEmpty(stack_a))
+        return ;
+    push(stack_b, pop(stack_a));
+    ft_printf("pb\n");
+}

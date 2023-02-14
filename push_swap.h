@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 16:23:11 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/14 19:10:09 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 # define PUSH_SWAP_H
 
 #include "libft/libft.h"
-#include "ft_printf/ft_printf.h"
 
 
-#define FT_P(msg) ft_printf(#msg " ==> %d\n", msg)
+#define FT_P(msg) ft_putstr_fd(#msg " ==> %d\n", msg)
 
 typedef struct s_retations
 {
@@ -41,6 +40,8 @@ void    print_stack(t_stack *stack);
 
 void    free_stack(t_stack *stack_a, t_stack *stack_b);
 void    free_2d_array(char  **numbers);
+
+int	check_is_duplicated(t_stack *stack);
 
 //  PUSH SWAP UTILS
 int     check_isdigits(char *str);
@@ -81,6 +82,9 @@ int     pop(t_stack *stack);
 void    clear(t_stack *stack);
 
 //  PUSH SWAP RULES
+void    ft_r(t_stack *stack);
+void    ft_rr(t_stack *stack);
+void    ft_s(t_stack *stack);
 void    sa(t_stack *stack_a);
 void    sb(t_stack *stack_b);
 void    ss(t_stack *stack_a, t_stack *stack_b);

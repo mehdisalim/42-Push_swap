@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   rules_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 18:53:18 by esalim            #+#    #+#             */
-/*   Updated: 2022/10/18 12:47:59 by esalim           ###   ########.fr       */
+/*   Created: 2023/02/14 19:24:44 by esalim            #+#    #+#             */
+/*   Updated: 2023/02/14 19:26:12 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../push_swap.h"
 
-char	*ft_strchr(const char *str, int c)
+void    ra(t_stack *stack_a)
 {
-	int	i;
-	int	len;
+    ft_r(stack_a);
+    ft_printf("ra\n");
+}
 
-	i = 0;
-	len = 0;
-	while (str[len])
-		len++;
-	while (i <= len)
-	{
-		if (str[i] == (unsigned char)c)
-			return ((char *)str + i);
-		i++;
-	}
-	return (0);
+void    rb(t_stack *stack_b)
+{
+    ft_r(stack_b);
+    ft_printf("rb\n");
+}
+
+void    rra(t_stack *stack_a)
+{
+    ft_rr(stack_a);
+    ft_printf("rra\n");
+}
+
+void    rrb(t_stack *stack_b)
+{
+    ft_rr(stack_b);
+    ft_printf("rrb\n");
 }

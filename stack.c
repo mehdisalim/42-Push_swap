@@ -12,7 +12,7 @@ t_stack *oncreate(int capacity)
     stack->top = -1;
     stack->stack = ft_calloc(capacity, sizeof(int));
     stack->tmp_arr = ft_calloc(stack->capacity, sizeof(int));
-    if (!stack->stack)
+    if (!stack->stack || !stack->tmp_arr)
     {
         ft_putendl_fd("Malloc faild", 2);
         exit(1);
@@ -49,10 +49,4 @@ int    pop(t_stack *stack)
     stack->stack[stack->top] = 0;
     stack->top--;
     return (value);
-}
-
-void    clear(t_stack *stack)
-{
-    while (!isEmpty(stack))
-        pop(stack);
 }
