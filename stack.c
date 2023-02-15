@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 23:51:58 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/15 10:20:45 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 19:31:09 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_stack	*oncreate(int capacity)
 
 int	is_full(t_stack *stack)
 {
-	if (stack->top >= stack->capacity)
+	if (stack->top >= stack->capacity - 1)
 		return (1);
 	return (0);
 }

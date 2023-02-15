@@ -6,13 +6,11 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:14:58 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/15 17:24:26 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 19:38:02 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "includes/push_swap.h"
-#include <stdio.h>
 
 void	conditions(t_stack **stack_a, t_stack **stack_b, char *buffer)
 {
@@ -51,7 +49,7 @@ void	apply_input_rules(t_stack *stack_a, t_stack *stack_b)
 	int		reader;
 
 	reader = 0;
-	str = ft_calloc(1, sizeof *str);
+	str = ft_calloc(1, sizeof(*str));
 	while (1)
 	{
 		ft_bzero(buffer, 2);
@@ -70,7 +68,7 @@ void	apply_input_rules(t_stack *stack_a, t_stack *stack_b)
 			ft_bzero(str, ft_strlen(str));
 		}
 	}
-	if (isasorted(stack_a) && is_empty(stack_b) && stack_a->top == stack_a->capacity - 1)
+	if (isasorted(stack_a) && is_empty(stack_b) && is_full(stack_a))
 		ft_putendl_fd("\033[0;32mOK\033[0m", 1);
 	else
 		ft_putendl_fd("\033[0;31mKO\033[0m", 1);
@@ -107,6 +105,8 @@ int main(int ac, char **av)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
+	if (ac == 1)
+		return (0);
 	args = get_all_args(ac, av);
 	numbers = ft_split(args, ' ');
 	capacity = get_num_count(numbers);

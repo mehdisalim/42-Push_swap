@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/15 13:26:28 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 19:44:00 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	main(int ac, char **av)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
+	if(ac == 1)
+		return (0);
 	args = get_all_args(ac, av);
 	numbers = ft_split(args, ' ');
 	capacity = get_num_count(numbers);

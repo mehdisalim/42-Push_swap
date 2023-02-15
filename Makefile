@@ -6,7 +6,7 @@
 #    By: esalim <esalim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 22:29:48 by esalim            #+#    #+#              #
-#    Updated: 2023/02/15 15:26:06 by esalim           ###   ########.fr        #
+#    Updated: 2023/02/15 19:48:48 by esalim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,14 +59,15 @@ $(NAME)		:	$(OBJS)
 	@$(CC) $(CFLAGS) -c $^ -o $@
 
 bonus		:	$(OBJSBONUS)
+	$(MAKE) libft
 	$(CC) $(CFLAGS) -g $(OBJSBONUS) libft/libft.a -o $(BONUS)
 
 clean		:
 	$(MAKE) libft/ clean
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJSBONUS)
 
 fclean		:	clean
 	$(MAKE) libft/ fclean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(BONUS)
 
 re			:	fclean all

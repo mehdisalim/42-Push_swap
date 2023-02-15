@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/15 15:43:58 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 19:28:38 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_stack		*oncreate(int capacity);
 void		push(t_stack *stack, int content);
 int			pop(t_stack *stack);
 int			is_empty(t_stack *stack);
+int         is_full(t_stack *stack);
 
 //  RULES/*.c
 void		ft_r(t_stack *stack);
