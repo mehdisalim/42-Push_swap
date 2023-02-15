@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/15 10:20:53 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 13:26:28 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ int	main(int ac, char **av)
 
 	args = get_all_args(ac, av);
 	numbers = ft_split(args, ' ');
-	free(args);
 	capacity = get_num_count(numbers);
-	stack_a = NULL;
-	stack_b = NULL;
+	stack_a = 0;
+	stack_b = 0;
 	setup_stack(&stack_a, &stack_b, numbers, capacity);
 	if (check_is_duplicated(stack_a))
 		destroy_program(stack_a, stack_b, numbers);
 	if (!isasorted(stack_a))
 		detect_sort(stack_a, stack_b);
+	free(args);
 	free_2d_array(numbers);
 	free_stack(stack_a, stack_b);
 	return (0);

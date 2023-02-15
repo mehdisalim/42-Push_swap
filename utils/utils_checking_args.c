@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:16:29 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/15 10:21:19 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 13:09:18 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,22 @@ char	*get_all_args(int ac, char **av)
 {
 	char	*res;
 	int		i;
+	int		j;
 	long	len;
 
-	i = 0;
 	len = 1;
+	i = 0;
 	if (ac == 2)
 		return (ft_strdup(av[1]));
 	while (++i < ac)
+	{
+		j = 0;
+		while (av[i][j] == ' ')
+			j++;
+		if (!av[i][j])
+			destroy_program(NULL, NULL, NULL);
 		len += ft_strlen(av[i]);
+	}
 	len += i;
 	res = malloc(len);
 	i = 0;
