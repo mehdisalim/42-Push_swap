@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:08:21 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/15 15:44:18 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 19:58:24 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	chunck_algo(t_stack *stack_a, t_stack *stack_b)
 			res--;
 		}
 		else
-			ra(stack_a, 1);;
+			ra(stack_a, 1);
 	}
 	if (stack_a->top == 2)
 		sort_three(stack_a);

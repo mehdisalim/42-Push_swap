@@ -6,13 +6,13 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:14:58 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/15 19:38:02 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 20:16:08 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-void	conditions(t_stack **stack_a, t_stack **stack_b, char *buffer)
+static	void	conditions(t_stack **stack_a, t_stack **stack_b, char *buffer)
 {
 	if (!ft_strncmp(buffer, "pb\n", 3))
 		pb(*stack_b, *stack_a, 0);
@@ -41,14 +41,25 @@ void	conditions(t_stack **stack_a, t_stack **stack_b, char *buffer)
 	}
 }
 
-void	apply_input_rules(t_stack *stack_a, t_stack *stack_b)
+static	void	check_newline(t_stack **stack_a, t_stack **stack_b, char **str)
+{
+	if (ft_strchr(*str, '\n'))
+	{
+		if (!ft_strncmp(*str, "pa\n", 3))
+			pa(*stack_a, *stack_b, 0);
+		else
+			conditions(stack_a, stack_b, *str);
+		ft_bzero(*str, ft_strlen(*str));
+	}
+}
+
+static	void	apply_input_rules(t_stack *stack_a, t_stack *stack_b)
 {
 	char	buffer[2];
 	char	*str;
 	char	*str2;
 	int		reader;
 
-	reader = 0;
 	str = ft_calloc(1, sizeof(*str));
 	while (1)
 	{
@@ -59,14 +70,7 @@ void	apply_input_rules(t_stack *stack_a, t_stack *stack_b)
 		str2 = ft_strjoin(str, buffer);
 		free(str);
 		str = str2;
-		if (ft_strchr(str, '\n'))
-		{
-			if (!ft_strncmp(str, "pa\n", 3))
-				pa(stack_a, stack_b, 0);
-			else
-				conditions(&stack_a, &stack_b, str);
-			ft_bzero(str, ft_strlen(str));
-		}
+		check_newline(&stack_a, &stack_b, &str);
 	}
 	if (isasorted(stack_a) && is_empty(stack_b) && is_full(stack_a))
 		ft_putendl_fd("\033[0;32mOK\033[0m", 1);
@@ -96,8 +100,7 @@ static void	setup_stack(t_stack **s_a, t_stack **s_b, char **num, int cp)
 	}
 }
 
-
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	char	*args;
 	char	**numbers;
@@ -119,5 +122,5 @@ int main(int ac, char **av)
 	free(args);
 	free_2d_array(numbers);
 	free_stack(stack_a, stack_b);
-	return 0;
+	return (0);
 }
