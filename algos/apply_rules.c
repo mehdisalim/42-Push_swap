@@ -6,13 +6,13 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 23:29:04 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 23:30:23 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 10:21:19 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
-void	apply_rules_2(t_stack *stack_a, t_stack *stack_b, t_retations op)
+static void	apply_rules_2(t_stack *stack_a, t_stack *stack_b, t_retations op)
 {
 	while (op.rrb)
 	{

@@ -6,11 +6,11 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:22:48 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 23:55:10 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 10:21:19 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
 void	ft_s(t_stack *stack)
 {

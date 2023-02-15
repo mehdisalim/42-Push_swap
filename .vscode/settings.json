@@ -25,7 +25,9 @@
         "tuple": "c",
         "type_traits": "c",
         "ft_printf.h": "c",
-        "libft.h": "c"
+        "libft.h": "c",
+        "stdlib.h": "c",
+        "structs.h": "c"
     },
     "[c]": {
         "editor.defaultFormatter": "keyhr.42-c-format"

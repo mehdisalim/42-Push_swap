@@ -6,13 +6,13 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 23:49:05 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 10:20:53 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
-void	setup_stack(t_stack **s_a, t_stack **s_b, char **num, int cp)
+static void	setup_stack(t_stack **s_a, t_stack **s_b, char **num, int cp)
 {
 	int		i;
 	int		check;
@@ -31,20 +31,6 @@ void	setup_stack(t_stack **s_a, t_stack **s_b, char **num, int cp)
 			destroy_program(*s_a, *s_b, num);
 		push(*s_a, number);
 	}
-}
-
-void	detect_sort(t_stack *stack_a, t_stack *stack_b)
-{
-	if (stack_a->capacity == 2)
-		sort_two(stack_a);
-	else if (stack_a->capacity == 3)
-		sort_three(stack_a);
-	else if (stack_a->capacity == 4)
-		sort_four(stack_a, stack_b);
-	else if (stack_a->capacity == 5)
-		sort_five(stack_a, stack_b);
-	else if (stack_a->capacity > 5)
-		sort_all(stack_a, stack_b);
 }
 
 int	main(int ac, char **av)

@@ -6,13 +6,13 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:08:15 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 23:29:42 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 10:29:10 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
-void	get_right_operations(t_retations **operations, int idx, int len)
+static void	get_right_operations(t_retations **operations, int idx, int len)
 {
 	if (idx == 1)
 	{
@@ -36,7 +36,7 @@ void	get_right_operations(t_retations **operations, int idx, int len)
 	}
 }
 
-void	get_best_move(t_retations *operations, int len, int *arr)
+static void	get_best_move(t_retations *operations, int len, int *arr)
 {
 	int	res[4];
 	int	idx;
@@ -65,7 +65,7 @@ void	get_best_move(t_retations *operations, int len, int *arr)
 	}
 }
 
-void	push_to_a(t_stack *s_a, t_stack *s_b, t_retations *oper, int *arr)
+static void	push_to_a(t_stack *s_a, t_stack *s_b, t_retations *oper, int *arr)
 {
 	t_retations	op;
 	int			idx;
@@ -76,7 +76,7 @@ void	push_to_a(t_stack *s_a, t_stack *s_b, t_retations *oper, int *arr)
 	pa(s_a, s_b);
 }
 
-void	get_all_iterations(t_stack *s_a, int *value, int top, t_retations *op)
+static void	get_all_iterations(t_stack *s_a, int *vl, int top, t_retations *op)
 {
 	t_retations	tmp;
 	int			i;
@@ -84,7 +84,7 @@ void	get_all_iterations(t_stack *s_a, int *value, int top, t_retations *op)
 	i = top;
 	while (i > -1)
 	{
-		tmp = get_position_in_a(s_a, value[i]);
+		tmp = get_position_in_a(s_a, vl[i]);
 		tmp.rb = top - i;
 		tmp.rrb = i + 1;
 		op[i] = tmp;

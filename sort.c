@@ -6,11 +6,11 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:12:23 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 23:50:37 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 10:53:36 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 void	sort_two(t_stack *stack_a)
 {
@@ -49,24 +49,7 @@ void	sort_four(t_stack *stack_a, t_stack *stack_b)
 	if (isasorted(stack_a))
 		return ;
 	get_min_number(stack_a, &idx);
-	if (idx == stack_a->top)
-		pb(stack_b, stack_a);
-	else if (idx == 0)
-	{
-		rra(stack_a);
-		pb(stack_b, stack_a);
-	}
-	else if (idx == 1)
-	{
-		rra(stack_a);
-		rra(stack_a);
-		pb(stack_b, stack_a);
-	}
-	else if (idx == 2)
-	{
-		sa(stack_a);
-		pb(stack_b, stack_a);
-	}
+	sort_four_conditions(stack_a, stack_b, idx);
 	sort_three(stack_a);
 	while (stack_b->top > -1)
 		pa(stack_a, stack_b);
@@ -79,30 +62,7 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b)
 	if (isasorted(stack_a))
 		return ;
 	get_min_number(stack_a, &idx);
-	if (idx == stack_a->top)
-		pb(stack_b, stack_a);
-	else if (idx == 0)
-	{
-		rra(stack_a);
-		pb(stack_b, stack_a);
-	}
-	else if (idx == 1)
-	{
-		rra(stack_a);
-		rra(stack_a);
-		pb(stack_b, stack_a);
-	}
-	else if (idx == 2)
-	{
-		ra(stack_a);
-		sa(stack_a);
-		pb(stack_b, stack_a);
-	}
-	else if (idx == 3)
-	{
-		sa(stack_a);
-		pb(stack_b, stack_a);
-	}
+	sort_five_conditions(stack_a, stack_b, idx);
 	sort_four(stack_a, stack_b);
 	pa(stack_a, stack_b);
 }

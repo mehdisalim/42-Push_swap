@@ -6,11 +6,11 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:22:41 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 23:47:43 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 10:20:45 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 void	free_2d_array(char **numbers)
 {

@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rules_push.c                                       :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 19:23:15 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/15 10:21:19 by esalim           ###   ########.fr       */
+/*   Created: 2023/02/15 10:18:30 by esalim            #+#    #+#             */
+/*   Updated: 2023/02/15 10:24:25 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
-void	pa(t_stack *stack_a, t_stack *stack_b)
+typedef struct s_retations
 {
-	if (is_empty(stack_b))
-		return ;
-	push(stack_a, pop(stack_b));
-	ft_putendl_fd("pa", 1);
-}
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}	t_retations;
 
-void	pb(t_stack *stack_b, t_stack *stack_a)
+typedef struct s_stack
 {
-	if (is_empty(stack_a))
-		return ;
-	push(stack_b, pop(stack_a));
-	ft_putendl_fd("pb", 1);
-}
+	int	top;
+	int	capacity;
+	int	*stack;
+	int	*tmp_arr;
+}	t_stack;
+
+#endif

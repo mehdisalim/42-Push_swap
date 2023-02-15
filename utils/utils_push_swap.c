@@ -6,11 +6,11 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:08:59 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 23:45:38 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 11:17:24 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
 int	get_min_number(t_stack *stack, int *index)
 {
@@ -107,35 +107,20 @@ t_retations	get_position_in_a(t_stack *stack_a, int value)
 	int			n;
 	int			i;
 
-	i = stack_a->top;
+	i = stack_a->top + 1;
 	arr = stack_a->stack;
-	rt_a.rb = 0;
-	rt_a.rrb = 0;
-	rt_a.ra = 0;
-	rt_a.rra = 0;
-	rt_a.rr = 0;
-	rt_a.rrr = 0;
-	if (value < get_min_number(stack_a, &n))
-	{
-		rt_a.ra = stack_a->top - n;
-		rt_a.rra = n + 1;
-		return (rt_a);
-	}
+	ft_bzero(&rt_a, (sizeof rt_a));
 	next_v = get_max_number(stack_a, &n);
-	if (value > next_v)
+	if (value >= get_min_number(stack_a, &n) && value <= next_v)
 	{
-		rt_a.ra = stack_a->top - n;
-		rt_a.rra = n + 1;
-		return (rt_a);
-	}
-	while (i > -1)
-	{
-		if (next_v >= arr[i] && arr[i] > value)
+		while (--i > -1)
 		{
-			next_v = arr[i];
-			n = i;
+			if (next_v >= arr[i] && arr[i] > value)
+			{
+				next_v = arr[i];
+				n = i;
+			}
 		}
-		i--;
 	}
 	rt_a.ra = stack_a->top - n;
 	rt_a.rra = n + 1;

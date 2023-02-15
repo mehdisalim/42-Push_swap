@@ -6,11 +6,11 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:34:20 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 23:46:40 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 10:45:42 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
 int	isasorted(t_stack *stack_a)
 {
@@ -47,4 +47,68 @@ void	sort_stack_a(t_stack *stack_a)
 		while (test--)
 			ra(stack_a);
 	}
+}
+
+void	sort_four_conditions(t_stack *stack_a, t_stack *stack_b, int idx)
+{
+	if (idx == stack_a->top)
+		pb(stack_b, stack_a);
+	else if (idx == 0)
+	{
+		rra(stack_a);
+		pb(stack_b, stack_a);
+	}
+	else if (idx == 1)
+	{
+		rra(stack_a);
+		rra(stack_a);
+		pb(stack_b, stack_a);
+	}
+	else if (idx == 2)
+	{
+		sa(stack_a);
+		pb(stack_b, stack_a);
+	}
+}
+
+void	sort_five_conditions(t_stack *stack_a, t_stack *stack_b, int idx)
+{
+	if (idx == stack_a->top)
+		pb(stack_b, stack_a);
+	else if (idx == 0)
+	{
+		rra(stack_a);
+		pb(stack_b, stack_a);
+	}
+	else if (idx == 1)
+	{
+		rra(stack_a);
+		rra(stack_a);
+		pb(stack_b, stack_a);
+	}
+	else if (idx == 2)
+	{
+		ra(stack_a);
+		sa(stack_a);
+		pb(stack_b, stack_a);
+	}
+	else if (idx == 3)
+	{
+		sa(stack_a);
+		pb(stack_b, stack_a);
+	}
+}
+
+void	detect_sort(t_stack *stack_a, t_stack *stack_b)
+{
+	if (stack_a->capacity == 2)
+		sort_two(stack_a);
+	else if (stack_a->capacity == 3)
+		sort_three(stack_a);
+	else if (stack_a->capacity == 4)
+		sort_four(stack_a, stack_b);
+	else if (stack_a->capacity == 5)
+		sort_five(stack_a, stack_b);
+	else if (stack_a->capacity > 5)
+		sort_all(stack_a, stack_b);
 }

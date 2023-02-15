@@ -6,13 +6,13 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:08:21 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/14 23:06:42 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 10:21:19 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
-void	ft_copy(int *dest, int *src, int len)
+static void	ft_copy(int *dest, int *src, int len)
 {
 	int	i;
 
@@ -21,7 +21,7 @@ void	ft_copy(int *dest, int *src, int len)
 		dest[i] = src[i];
 }
 
-int	get_middle_of_arr(t_stack *stack_a, int *tmp)
+static int	get_middle_of_arr(t_stack *stack_a, int *tmp)
 {
 	int	value;
 	int	i;
@@ -42,7 +42,7 @@ int	get_middle_of_arr(t_stack *stack_a, int *tmp)
 	return (value);
 }
 
-int	get_less_than_middle(t_stack *stack_a, int value)
+static int	get_less_than_middle(t_stack *stack_a, int value)
 {
 	int	res;
 	int	i;
