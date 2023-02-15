@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:13:53 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/15 10:45:22 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 15:43:58 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,16 @@ int			is_empty(t_stack *stack);
 void		ft_r(t_stack *stack);
 void		ft_rr(t_stack *stack);
 void		ft_s(t_stack *stack);
-void		sa(t_stack *stack_a);
-void		sb(t_stack *stack_b);
-void		ss(t_stack *stack_a, t_stack *stack_b);
-void		pa(t_stack *stack_a, t_stack *stack_b);
-void		pb(t_stack *stack_b, t_stack *stack_a);
-void		ra(t_stack *stack_a);
-void		rb(t_stack *stack_b);
-void		rr(t_stack *stack_a, t_stack *stack_b);
-void		rra(t_stack *stack_a);
-void		rrb(t_stack *stack_b);
-void		rrr(t_stack *stack_a, t_stack *stack_b);
+void		sa(t_stack *stack_a, int show);
+void		sb(t_stack *stack_b, int show);
+void		ss(t_stack *stack_a, t_stack *stack_b, int show);
+void		pa(t_stack *stack_a, t_stack *stack_b, int show);
+void		pb(t_stack *stack_b, t_stack *stack_a, int show);
+void		ra(t_stack *stack_a, int show);
+void		rb(t_stack *stack_b, int show);
+void		rr(t_stack *stack_a, t_stack *stack_b, int show);
+void		rra(t_stack *stack_a, int show);
+void		rrb(t_stack *stack_b, int show);
+void		rrr(t_stack *stack_a, t_stack *stack_b, int show);
 
 #endif

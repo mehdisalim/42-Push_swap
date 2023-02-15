@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:08:21 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/15 10:21:19 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 15:44:18 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ void	chunck_algo(t_stack *stack_a, t_stack *stack_b)
 		}
 		if (stack_a->stack[stack_a->top] <= middle)
 		{
-			pb(stack_b, stack_a);
+			pb(stack_b, stack_a, 1);
 			res--;
 		}
 		else
-			ra(stack_a);
+			ra(stack_a, 1);;
 	}
 	if (stack_a->top == 2)
 		sort_three(stack_a);

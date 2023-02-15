@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:22:48 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/15 10:21:19 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 15:40:08 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,24 @@ void	ft_s(t_stack *stack)
 	push(stack, tmp2);
 }
 
-void	sa(t_stack *stack_a)
+void	sa(t_stack *stack_a, int show)
 {
 	ft_s(stack_a);
-	ft_putendl_fd("sa", 1);
+	if (show)
+		ft_putendl_fd("sa", 1);
 }
 
-void	sb(t_stack *stack_b)
+void	sb(t_stack *stack_b, int show)
 {
 	ft_s(stack_b);
-	ft_putendl_fd("sb", 1);
+	if (show)
+		ft_putendl_fd("sb", 1);
 }
 
-void	ss(t_stack *stack_a, t_stack *stack_b)
+void	ss(t_stack *stack_a, t_stack *stack_b, int show)
 {
 	ft_s(stack_a);
 	ft_s(stack_b);
-	ft_putendl_fd("ss", 1);
+	if (show)
+		ft_putendl_fd("ss", 1);
 }
