@@ -27,7 +27,9 @@
         "ft_printf.h": "c",
         "libft.h": "c",
         "stdlib.h": "c",
-        "structs.h": "c"
+        "structs.h": "c",
+        "sstream": "c",
+        "readline.h": "c"
     },
     "[c]": {
         "editor.defaultFormatter": "keyhr.42-c-format"

@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:34:20 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/15 10:45:42 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 15:44:40 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,63 +39,63 @@ void	sort_stack_a(t_stack *stack_a)
 	{
 		idx++;
 		while (idx--)
-			rra(stack_a);
+			rra(stack_a, 1);;
 	}
 	else
 	{
 		test = stack_a->top - idx;
 		while (test--)
-			ra(stack_a);
+			ra(stack_a, 1);;
 	}
 }
 
 void	sort_four_conditions(t_stack *stack_a, t_stack *stack_b, int idx)
 {
 	if (idx == stack_a->top)
-		pb(stack_b, stack_a);
+		pb(stack_b, stack_a, 1);
 	else if (idx == 0)
 	{
-		rra(stack_a);
-		pb(stack_b, stack_a);
+		rra(stack_a, 1);;
+		pb(stack_b, stack_a, 1);
 	}
 	else if (idx == 1)
 	{
-		rra(stack_a);
-		rra(stack_a);
-		pb(stack_b, stack_a);
+		rra(stack_a, 1);;
+		rra(stack_a, 1);;
+		pb(stack_b, stack_a, 1);
 	}
 	else if (idx == 2)
 	{
-		sa(stack_a);
-		pb(stack_b, stack_a);
+		sa(stack_a, 1);
+		pb(stack_b, stack_a, 1);
 	}
 }
 
 void	sort_five_conditions(t_stack *stack_a, t_stack *stack_b, int idx)
 {
 	if (idx == stack_a->top)
-		pb(stack_b, stack_a);
+		pb(stack_b, stack_a, 1);
 	else if (idx == 0)
 	{
-		rra(stack_a);
-		pb(stack_b, stack_a);
+		rra(stack_a, 1);;
+		pb(stack_b, stack_a, 1);
 	}
 	else if (idx == 1)
 	{
-		rra(stack_a);
-		rra(stack_a);
-		pb(stack_b, stack_a);
+		rra(stack_a, 1);;
+		rra(stack_a, 1);;
+		pb(stack_b, stack_a, 1);
 	}
 	else if (idx == 2)
 	{
-		ra(stack_a);
-		sa(stack_a);
-		pb(stack_b, stack_a);
+		ra(stack_a, 1);;
+		sa(stack_a, 1);
+		pb(stack_b, stack_a, 1);
 	}
 	else if (idx == 3)
 	{
-		sa(stack_a);
-		pb(stack_b, stack_a);
+		sa(stack_a, 1);
+		pb(stack_b, stack_a, 1);
 	}
 }
 

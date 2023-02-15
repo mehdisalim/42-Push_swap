@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:08:15 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/15 13:18:35 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/15 15:44:12 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	push_to_a(t_stack *s_a, t_stack *s_b, t_retations *oper, int *arr)
 	idx = get_index_of_operation(arr, s_b->top);
 	op = oper[idx];
 	apply_rules(s_a, s_b, op);
-	pa(s_a, s_b);
+	pa(s_a, s_b, 1);
 }
 
 static void	get_all_iterations(t_stack *s_a, int *vl, int top, t_retations *op)
