@@ -6,7 +6,7 @@
 #    By: esalim <esalim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 22:29:48 by esalim            #+#    #+#              #
-#    Updated: 2023/02/15 20:47:37 by esalim           ###   ########.fr        #
+#    Updated: 2023/02/16 09:46:15 by esalim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,15 +45,17 @@ MAKE		=	make -C
 all			:	$(NAME)
 
 $(NAME)		:	$(OBJSMAND)
+	@$(MAKE) libft
+	$(CC) $(CFLAGS) $^ libft/libft.a -o $@
+
+bonus		:	$(BONUS)
+
+$(BONUS)	:	$(OBJSBONUS)
 	$(MAKE) libft
-	$(CC) $(CFLAGS) $(OBJSMAND) libft/libft.a -o $(NAME)
+	$(CC) $(CFLAGS) $^ libft/libft.a -o $(BONUS)
 
 %.o 		:	%.c
 	@$(CC) $(CFLAGS) -c -I$(INCLUDES) $^ -o $@
-
-bonus		:	$(OBJSBONUS)
-	$(MAKE) libft
-	$(CC) $(CFLAGS) $(OBJSBONUS) libft/libft.a -o $(BONUS)
 
 clean		:
 	$(MAKE) libft/ clean
