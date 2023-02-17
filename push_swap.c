@@ -6,7 +6,7 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/15 19:58:11 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/17 10:55:36 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static void	setup_stack(t_stack **s_a, t_stack **s_b, char **num, int cp)
 	{
 		check = check_isdigits(num[i]);
 		number = ft_atoi(num[i]);
-		if ((number > 2147483647 || number < -2147483648) || !check)
+		if ((number > 2147483647 || number < -2147483648)
+			|| !check || ft_strlen(num[i]) > 12)
 			destroy_program(*s_a, *s_b, num);
 		push(*s_a, number);
 	}
