@@ -6,11 +6,27 @@
 /*   By: esalim <esalim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:27:44 by esalim            #+#    #+#             */
-/*   Updated: 2023/02/17 10:55:36 by esalim           ###   ########.fr       */
+/*   Updated: 2023/02/19 15:31:01 by esalim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
+
+static int	my_strlen(char	*str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	j = i;
+	while (str[j] && str[j] == '0')
+		j++;
+	while (str[i + j])
+		i++;
+	return (i);
+}
 
 static void	setup_stack(t_stack **s_a, t_stack **s_b, char **num, int cp)
 {
@@ -28,7 +44,7 @@ static void	setup_stack(t_stack **s_a, t_stack **s_b, char **num, int cp)
 		check = check_isdigits(num[i]);
 		number = ft_atoi(num[i]);
 		if ((number > 2147483647 || number < -2147483648)
-			|| !check || ft_strlen(num[i]) > 12)
+			|| !check || my_strlen(num[i]) > 12)
 			destroy_program(*s_a, *s_b, num);
 		push(*s_a, number);
 	}
